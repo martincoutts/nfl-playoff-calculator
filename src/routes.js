@@ -7,7 +7,7 @@ export default new Router({
   mode: "history",
   routes: [
     {
-      path: "/standings",
+      path: "/standings/overall",
       name: "MainStandings",
       component: MainStandings,
     },
