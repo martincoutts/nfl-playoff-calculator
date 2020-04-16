@@ -12,7 +12,7 @@ import SubNav from "./components/SubNav";
 
 export default {
   name: "App",
-  components: { MainNav, SubNav },
+  components: { MainNav, SubNav }
 };
 </script>
 
