@@ -1,13 +1,18 @@
 <template>
   <div id="app">
-    <h1>Placeholder</h1>
+    <MainNav />
+    <SubNav />
+    <router-view />
   </div>
 </template>
 
 <script>
+import MainNav from "./components/MainNav";
+import SubNav from "./components/SubNav";
+
 export default {
   name: "App",
-  components: {},
+  components: { MainNav, SubNav }
 };
 </script>
 
