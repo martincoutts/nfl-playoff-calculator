@@ -2,7 +2,7 @@
   <div id="app">
     <MainNav />
     <SubNav />
-    <router-view :results="this.results" />
+    <router-view :results="this.results" :sortTeams="this.sortTeams" />
   </div>
 </template>
 
@@ -32,6 +32,22 @@ export default {
       } catch (e) {
         console.log(e);
       }
+    },
+    sortTeams: function(arr, customVarA, customVarB, customVarC) {
+      const compare = (a, b) => {
+        if (a[customVarA] > b[customVarA]) return -1;
+        if (a[customVarA] === b[customVarA]) {
+          if (a[customVarB] < b[customVarB]) {
+            return -1;
+          } else if (a[customVarC] < b[customVarC]) {
+            return -1;
+          }
+        }
+        if (a[customVarA] < b[customVarA]) return 1;
+        return 0;
+      };
+      const sortedArr = arr.sort(compare);
+      return sortedArr;
     },
   },
 };

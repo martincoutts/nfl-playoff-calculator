@@ -1,7 +1,7 @@
 <template>
   <div>
     OverallStandingsTable
-    <AfcOverall :teams="this.afc" />
+    <AfcOverall :teams="this.afc" :sortTeams="this.sortTeams" />
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import AfcOverall from "./AfcOverall";
 export default {
   name: "OverallStandingsTable",
   components: { AfcOverall },
-  props: ["results"],
+  props: ["results", "sortTeams"],
   data: function() {
     return {
       afc: [],
@@ -18,15 +18,18 @@ export default {
     };
   },
   created: function() {
-    this.sortConferences();
+    this.afc = this.sortConferences(this.results, "AFC");
+    this.nfc = this.sortConferences(this.results, "NFC");
   },
+
   methods: {
-    sortConferences: function() {
-      this.results.map((team) => {
-        team.Conference && team.Conference === "AFC"
-          ? this.afc.push(team)
-          : this.nfc.push(team);
+    sortConferences: function(arr, conference) {
+      console.log("sortConferences");
+      const tempArr = [];
+      arr.map((team) => {
+        team.Conference === conference ? tempArr.push(team) : null;
       });
+      return tempArr;
     },
   },
 };

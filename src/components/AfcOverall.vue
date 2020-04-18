@@ -12,7 +12,23 @@
 </template>
 
 <script>
-export default { name: "AfcOverall", props: ["teams"] };
+export default {
+  name: "AfcOverall",
+  props: ["teams", "sortTeams"],
+  data: function() {
+    return {
+      sortedTeams: [],
+    };
+  },
+  created: function() {
+    this.sortedTeams = this.sortTeams(
+      this.teams,
+      "Wins",
+      "DivisionWins",
+      "ConferenceWins"
+    );
+  },
+};
 </script>
 
 <style lang="scss" scoped>
