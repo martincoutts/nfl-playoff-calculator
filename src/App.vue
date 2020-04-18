@@ -37,6 +37,7 @@ export default {
         console.log(e);
       }
     },
+    // TODO: Need to find a way to test wether team a has played team b and what the result was
     sortTeams: function(arr, customVarA, customVarB, customVarC) {
       const compare = (a, b) => {
         if (a[customVarA] > b[customVarA]) return -1;
@@ -44,9 +45,11 @@ export default {
           if (a[customVarB] > b[customVarB]) {
             console.log(customVarB);
             return -1;
-          } else if (a[customVarC] > b[customVarC]) {
-            console.log(customVarC);
-            return -1;
+          } else if (a[customVarB] === b[customVarB]) {
+            if (a[customVarC] > b[customVarC]) {
+              console.log(customVarC);
+              return -1;
+            }
           }
         }
         if (a[customVarA] < b[customVarA]) return 1;

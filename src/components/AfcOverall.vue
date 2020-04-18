@@ -1,20 +1,28 @@
 <template>
   <div class="standings__afc--overall">
     <h1 class="afc-overall__title">AFC</h1>
-    <div v-for="team in teams" :key="team.TeamID" class="afc-overall__team">
-      <p>{{ team.Name }}</p>
-      <p>{{ team.Wins }}</p>
-      <p>{{ team.Losses }}</p>
-      <p>{{ team.Ties }}</p>
-      <p>{{ team.Percentage }}</p>
-    </div>
+    <table>
+      <tr>
+        <th>Logo</th>
+        <th>Team</th>
+        <th>W</th>
+        <th>L</th>
+        <th>T</th>
+        <th>PCT</th>
+      </tr>
+      <tr v-for="team in teams" :key="team.TeamID" class="afc-overall__team">
+        <TeamRow :team="team" />
+      </tr>
+    </table>
   </div>
 </template>
 
 <script>
+import TeamRow from "./TeamRow";
 export default {
   name: "AfcOverall",
   props: ["teams", "sortTeams"],
+  components: { TeamRow },
   data: function() {
     return {
       sortedTeams: [],
@@ -28,16 +36,20 @@ export default {
       "ConferenceWins"
     );
   },
+  methods: {},
 };
 </script>
 
 <style lang="scss" scoped>
+table,
+th,
+td {
+  border: 1px solid black;
+  padding: 0 1rem 0 0;
+}
 .afc-overall {
   &__team {
     display: flex;
-    p {
-      padding: 0 1rem 0 0;
-    }
   }
 }
 </style>
