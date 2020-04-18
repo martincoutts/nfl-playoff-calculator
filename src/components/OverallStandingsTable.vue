@@ -1,16 +1,25 @@
 <template>
-  <div>
-    OverallStandingsTable
-    <AfcOverall :teams="this.afc" :sortTeams="this.sortTeams" />
+  <div class="overall-standings-table">
+    <AfcOverall
+      v-if="this.conference === 'AFC'"
+      :teams="this.afc"
+      :sortTeams="this.sortTeams"
+    />
+    <NfcOverall
+      v-if="this.conference === 'NFC'"
+      :teams="this.nfc"
+      :sortTeams="this.sortTeams"
+    />
   </div>
 </template>
 
 <script>
 import AfcOverall from "./AfcOverall";
+import NfcOverall from "./NfcOverall";
 export default {
   name: "OverallStandingsTable",
-  components: { AfcOverall },
-  props: ["results", "sortTeams"],
+  components: { AfcOverall, NfcOverall },
+  props: ["results", "sortTeams", "conference"],
   data: function() {
     return {
       afc: [],
@@ -18,18 +27,15 @@ export default {
     };
   },
   created: function() {
-    this.afc = this.sortConferences(this.results, "AFC");
-    this.nfc = this.sortConferences(this.results, "NFC");
+    this.sortConferences(this.results, "AFC", this.afc);
+    this.sortConferences(this.results, "NFC", this.nfc);
   },
 
   methods: {
-    sortConferences: function(arr, conference) {
-      console.log("sortConferences");
-      const tempArr = [];
+    sortConferences: function(arr, conference, conferenceArr) {
       arr.map((team) => {
-        team.Conference === conference ? tempArr.push(team) : null;
+        team.Conference === conference ? conferenceArr.push(team) : null;
       });
-      return tempArr;
     },
   },
 };
