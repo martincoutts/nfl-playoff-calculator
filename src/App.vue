@@ -24,6 +24,7 @@ export default {
   },
   created: function() {
     this.fetchData();
+    this.fetchNewData();
   },
   methods: {
     fetchData: async function() {
@@ -37,6 +38,7 @@ export default {
         console.log(e);
       }
     },
+
     // TODO: Need to find a way to test wether team a has played team b and what the result was
     sortTeams: function(arr, customVarA, customVarB, customVarC) {
       const compare = (a, b) => {
