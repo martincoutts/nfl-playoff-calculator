@@ -1,19 +1,19 @@
 <template>
   <div class="standings__nfc--overall">
     <h1 class="nfc-overall__title">NFC</h1>
-    <table>
-      <tr>
-        <th>Logo</th>
-        <th>Team</th>
-        <th>W</th>
-        <th>L</th>
-        <th>T</th>
-        <th>PCT</th>
-      </tr>
+    <div>
+      <div class="">
+        <h3>Logo</h3>
+        <h3>Team</h3>
+        <h3>W</h3>
+        <h3>L</h3>
+        <h3>T</h3>
+        <h3>PCT</h3>
+      </div>
       <div v-for="team in teams" :key="team.TeamID" class="nfc-overall__team">
         <TeamRow :team="team" />
       </div>
-    </table>
+    </div>
   </div>
 </template>
 

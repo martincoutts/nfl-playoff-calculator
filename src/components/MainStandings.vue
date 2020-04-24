@@ -23,4 +23,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.team-row__logo {
+  height: 40px;
+}
+</style>

@@ -1,19 +1,19 @@
 <template>
   <div class="standings__afc--overall">
     <h1 class="afc-overall__title">AFC</h1>
-    <table>
-      <tr>
-        <th>Logo</th>
-        <th>Team</th>
-        <th>W</th>
-        <th>L</th>
-        <th>T</th>
-        <th>PCT</th>
-      </tr>
-      <tr v-for="team in teams" :key="team.TeamID" class="afc-overall__team">
+    <div>
+      <div class="">
+        <h3>Logo</h3>
+        <h3>Team</h3>
+        <h3>W</h3>
+        <h3>L</h3>
+        <h3>T</h3>
+        <h3>PCT</h3>
+      </div>
+      <div v-for="team in teams" :key="team.TeamID" class="afc-overall__team">
         <TeamRow :team="team" />
-      </tr>
-    </table>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -41,11 +41,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-table,
-th,
-td {
-  border: 1px solid black;
-  padding: 0 1rem 0 0;
+table {
+  table-layout: fixed;
 }
 .afc-overall {
   &__team {

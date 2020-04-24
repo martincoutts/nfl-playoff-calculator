@@ -1,26 +1,31 @@
 <template>
-  <div class="team-row">
-    <td v-html="html"></td>
-    <td>{{ team.Name }}</td>
+  <Fragment>
+    <TeamLogo :logo="logo" />
 
-    <td>{{ team.Wins }}</td>
+    <p>{{ team.Name }}</p>
 
-    <td>{{ team.Losses }}</td>
+    <p>{{ team.Wins }}</p>
 
-    <td>{{ team.Ties }}</td>
+    <p>{{ team.Losses }}</p>
 
-    <td>{{ team.Percentage }}</td>
-  </div>
+    <p>{{ team.Ties }}</p>
+
+    <p>{{ team.Percentage }}</p>
+  </Fragment>
 </template>
 
 <script>
+import TeamLogo from "./TeamLogo";
+import { Fragment } from "vue-fragment";
 export default {
   name: "TeamRow",
+  components: { TeamLogo, Fragment },
   props: ["team"],
   data: function() {
     return {
       teamName: this.team.Team,
       html: "",
+      logo: "",
     };
   },
   created: function() {
@@ -29,10 +34,11 @@ export default {
   methods: {
     imageImport: function() {
       //   const path = `../assets/images/teamImages/png/${this.team.Conference}/${this.teamName}.png`;
-      const logo = require(`../assets/images/teamImages/svg/${this.team.Conference}/${this.teamName}.svg`);
-      const component = `<div class="team-row__logo"><img src=${logo} /></div>`;
+      this.logo = require(`../assets/images/teamImages/svg/${this.team.Conference}/${this.teamName}.svg`);
 
-      this.html = component;
+      //   const component = `<img class="team-row__logo" src=${logo} />`;
+
+      //   this.html = component;
     },
   },
 };
