@@ -1,6 +1,6 @@
 <template>
   <div class="team-row">
-    <td v-html="html" class="team-row__logo"></td>
+    <td v-html="html"></td>
     <td>{{ team.Name }}</td>
 
     <td>{{ team.Wins }}</td>
@@ -29,8 +29,8 @@ export default {
   methods: {
     imageImport: function() {
       //   const path = `../assets/images/teamImages/png/${this.team.Conference}/${this.teamName}.png`;
-      const logo = require(`../assets/images/teamImages/png/${this.team.Conference}/${this.teamName}.png`);
-      const component = `<img src=${logo} />`;
+      const logo = require(`../assets/images/teamImages/svg/${this.team.Conference}/${this.teamName}.svg`);
+      const component = `<div class="team-row__logo"><img src=${logo} /></div>`;
 
       this.html = component;
     },
@@ -38,12 +38,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.team-row {
-  &__logo {
-    img {
-      height: 5px;
-    }
-  }
-}
-</style>
+<style lang="scss" scoped></style>
