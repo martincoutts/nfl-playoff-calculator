@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: "SubNav"
+  name: "SubNav",
 };
 </script>
 
@@ -28,9 +28,10 @@ export default {
   .sub-nav {
     nav {
       display: grid;
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: minmax(100px, 1fr) 3fr;
+      align-items: center;
+      column-gap: 1rem;
       border-bottom: solid 1px black;
-      padding-left: 10px;
 
       h1 {
         font-size: 12pt;
@@ -40,6 +41,7 @@ export default {
     &__links {
       grid-column: 2 / span 1;
       display: flex;
+      gap: 1rem;
     }
   }
 }

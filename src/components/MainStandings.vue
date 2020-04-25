@@ -1,11 +1,22 @@
 <template>
   <div>
-    Main Standings
+    <OverallStandingsTable />
   </div>
 </template>
 
 <script>
-export default { name: "MainStandings" };
+import OverallStandingsTable from "./OverallStandingsTable";
+export default {
+  name: "MainStandings",
+  components: { OverallStandingsTable },
+  data: function() {
+    return {};
+  },
+};
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.team-row__logo {
+  height: 40px;
+}
+</style>
