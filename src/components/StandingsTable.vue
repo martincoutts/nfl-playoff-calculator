@@ -1,11 +1,8 @@
 <template>
-  <div class="standings__nfc--overall">
+  <div class="standings-table">
     <div class="nfc-overall__header">
-      <img
-        class="nfc-overall__logo"
-        src="../assets/images/conferences/NFC.svg"
-      />
-      <h1 class="nfc-overall__title">NFC</h1>
+      <TeamLogo class="nfc-overall__logo" :logo="logo" />
+      <h1 class="nfc-overall__title">{{ title }}</h1>
     </div>
 
     <div class="nfc-overall__table">
@@ -17,7 +14,11 @@
         <h3>T</h3>
         <h3>PCT</h3>
       </div>
-      <div v-for="team in teams" :key="team.TeamID" class="nfc-overall__team">
+      <div
+        v-for="team in sortedTeams"
+        :key="team.TeamID"
+        class="nfc-overall__team"
+      >
         <TeamRow :team="team" />
       </div>
     </div>
@@ -25,25 +26,40 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import TeamRow from "./TeamRow";
+import TeamLogo from "./TeamLogo";
 export default {
   name: "StandingsTable",
-  props: ["teams", "sortTeams"],
-  components: { TeamRow },
+  props: ["teams", "title", "conference", "tableType"],
+  components: { TeamRow, TeamLogo },
   data: function() {
     return {
-      sortedTeams: [],
+      sortedTeams: "",
+      logo: "",
+      bemBase: `${this.conference}-${this.tableType}`,
     };
   },
   created: function() {
-    this.sortedTeams = this.sortTeams(
-      this.teams,
-      "Wins",
-      "DivisionWins",
-      "ConferenceWins"
-    );
+    this.defineConference();
+    this.imageImport();
   },
-  methods: {},
+  computed: {
+    ...mapGetters(["sortedAfc", "sortedNfc"]),
+  },
+  methods: {
+    defineConference: function() {
+      if (this.conference === "AFC") {
+        console.log("1", this.conference);
+        this.sortedTeams = this.sortedAfc;
+      } else {
+        this.sortedTeams = this.sortedNfc;
+      }
+    },
+    imageImport: function() {
+      this.logo = require(`../assets/images/conferences//${this.conference}.svg`);
+    },
+  },
 };
 </script>
 

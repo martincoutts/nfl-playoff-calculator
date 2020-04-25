@@ -1,49 +1,41 @@
 <template>
   <div class="overall-standings-table">
-    <!-- <AfcOverall
-      v-if="this.conference === 'AFC'"
-      :teams="this.afc"
-      :sortTeams="this.sortTeams"
-    />
-    <NfcOverall
-      v-if="this.conference === 'NFC'"
-      :teams="this.nfc"
-      :sortTeams="this.sortTeams"
-    /> -->
-    <div v-for="(arr, index) in data" :key="index">
-      <StandingsTable :teams="arr" :sortTeams="this.sortTeams" />
+    <div v-for="(arr, index) in combinedConferences" :key="index">
+      <StandingsTable
+        :title="arr[0].Conference"
+        :conference="arr[0].Conference"
+        :tableType="'overall'"
+      />
     </div>
   </div>
 </template>
 
 <script>
-// import AfcOverall from "./AfcOverall";
-// import NfcOverall from "./NfcOverall";
+import { mapState, mapActions } from "vuex";
 import StandingsTable from "./StandingsTable";
 export default {
   name: "OverallStandingsTable",
   components: { StandingsTable },
-  props: ["results", "sortTeams"],
+
   data: function() {
-    return {
-      afc: [],
-      nfc: [],
-      data: [],
-    };
+    return {};
+  },
+  computed: {
+    ...mapState(["results", "combinedConferences"]),
   },
   created: function() {
-    this.sortConferences(this.results, "AFC", this.afc);
-    this.sortConferences(this.results, "NFC", this.nfc);
-    this.data.push(this.afc);
-    this.data.push(this.nfc);
+    this.sortConferences({
+      conference: "AFC",
+      conferenceArray: "afc",
+    });
+    this.sortConferences({
+      conference: "NFC",
+      conferenceArray: "nfc",
+    });
   },
 
   methods: {
-    sortConferences: function(arr, conference, conferenceArr) {
-      arr.map((team) => {
-        team.Conference === conference ? conferenceArr.push(team) : null;
-      });
-    },
+    ...mapActions(["sortConferences"]),
   },
 };
 </script>

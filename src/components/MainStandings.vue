@@ -1,9 +1,6 @@
 <template>
   <div>
-    <OverallStandingsTable
-      :results="this.results"
-      :sortTeams="this.sortTeams"
-    />
+    <OverallStandingsTable />
   </div>
 </template>
 
@@ -12,7 +9,9 @@ import OverallStandingsTable from "./OverallStandingsTable";
 export default {
   name: "MainStandings",
   components: { OverallStandingsTable },
-  props: ["results", "sortTeams"],
+  data: function() {
+    return {};
+  },
 };
 </script>
 

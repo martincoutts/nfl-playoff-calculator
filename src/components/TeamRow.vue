@@ -33,12 +33,7 @@ export default {
   },
   methods: {
     imageImport: function() {
-      //   const path = `../assets/images/teamImages/png/${this.team.Conference}/${this.teamName}.png`;
       this.logo = require(`../assets/images/teamImages/svg/${this.team.Conference}/${this.teamName}.svg`);
-
-      //   const component = `<img class="team-row__logo" src=${logo} />`;
-
-      //   this.html = component;
     },
   },
 };

@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: "MainNav"
+  name: "MainNav",
 };
 </script>
 
@@ -55,8 +55,8 @@ export default {
 }
 
 @include lg {
-  nav {
-    background-color: blue;
-  }
+  // nav {
+  //   background-color: blue;
+  // }
 }
 </style>
