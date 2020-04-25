@@ -3,33 +3,32 @@
 <template>
   <div class="afc-standings-table">
     <h1>AFC STANDINGS</h1>
-    <div v-for="(arr, index) in combinedConferences" :key="index">
+    <!-- <div v-for="(div, index) in afcDivs" :key="index">
       <StandingsTable
-        :title="arr[0].Conference"
-        :conference="arr[0].Conference"
-        :tableType="'overall'"
+        :title="div.value[0].Conference"
+        :conference="div.value[0].Conference"
+        :tableType="'division'"
       />
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapState, mapActions } from "vuex";
 import StandingsTable from "./StandingsTable";
 export default {
   name: "AfcStandings",
-  components: { StandingsTable },
+  // components: { StandingsTable },
 
   //   data: function() {
   //     return {};
   //   },
-  //   computed: {
-  //     ...mapState(["results", "combinedConferences"]),
-  //   },
+  computed: {
+    ...mapState(["afcDivs"]),
+  },
   created: function() {
     this.sortConferences({
-      conference: "AFC",
-      conferenceArray: "afc",
+      divisions: true,
     });
   },
 

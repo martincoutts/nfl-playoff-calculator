@@ -30,18 +30,16 @@ export default new Vuex.Store({
     afc: [],
     nfc: [],
     combinedConferences: [],
-    afcDivs: new Map([
-      ["North", []],
-      ["East", []],
-      ["South", []],
-      ["West", []],
-    ]),
-    nfcDivs: new Map([
-      ["North", []],
-      ["East", []],
-      ["South", []],
-      ["West", []],
-    ]),
+    AFCNorth: [],
+    AFCEast: [],
+    AFCSouth: [],
+    AFCWest: [],
+    AFCDivs: [],
+    NFCNorth: [],
+    NFCEast: [],
+    NFCSouth: [],
+    NFCWest: [],
+    NFCDivs: [],
   },
   getters: {
     sortedAfc: (state) =>
@@ -68,7 +66,11 @@ export default new Vuex.Store({
     },
 
     SORT_CONFERENCES: function(state, payload) {
-      if (!state.afc.length || !state.nfc.length) {
+      if (
+        !state.afc.length ||
+        !state.nfc.length ||
+        !payload.sortDivisions !== true
+      ) {
         state.results.map((team) => {
           team.Conference === payload.conference
             ? state[payload.conferenceArray].push(team)
@@ -77,18 +79,30 @@ export default new Vuex.Store({
         state.combinedConferences = [state.afc, state.nfc];
       } else return;
     },
-    SORT_DEVISIONS: function(state) {
-      if (state.afcDivs.get("North").length < 4) {
-        console.log("SORT_DEVISIONS", state.afcDivs.get("North").length);
-        state.results.map((team) => {
-          console.log("team", team);
-          if (team.Conference === "AFC") {
-            state.afcDivs.get(team.Division).push(team);
-          } else if (team.Conference === "NFC") {
-            state.nfcDivs.get(team.Division).push(team);
-          } else return;
-        });
-      } else return;
+    SORT_DIVISIONS: function(state) {
+      state.results.map((team) => {
+        const path = `${team.Conference}${team.Division}`;
+
+        state[path].push(team);
+        state[path] = sortTeamsFunc(
+          state[path],
+          "Wins",
+          "DivisionWins",
+          "ConferenceWins"
+        );
+      });
+      state.AFCDivs = [
+        state.AFCNorth,
+        state.AFCEast,
+        state.AFCSouth,
+        state.AFCWest,
+      ];
+      state.NFCDivs = [
+        state.NFCNorth,
+        state.NFCEast,
+        state.NFCSouth,
+        state.NFCWest,
+      ];
     },
   },
   actions: {
@@ -100,7 +114,7 @@ export default new Vuex.Store({
     },
     sortConferences: (context, payload) => {
       context.commit("SORT_CONFERENCES", payload);
-      context.commit("SORT_DEVISIONS");
+      context.commit("SORT_DIVISIONS");
     },
   },
 });
