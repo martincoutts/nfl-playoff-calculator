@@ -1,5 +1,5 @@
 <template>
-  <td><img v-bind:src="logo" /></td>
+  <div><img v-bind:src="logo" /></div>
 </template>
 
 <script>

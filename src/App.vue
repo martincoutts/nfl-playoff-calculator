@@ -5,7 +5,7 @@
     <div class="app__spinner" v-if="!hasResults">
       <a-spin size="large" />
     </div>
-    <router-view v-if="hasResults" />
+    <router-view class="app__router-view" v-if="hasResults" />
   </div>
 </template>
 
@@ -33,9 +33,12 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #app {
   .app {
+    &__router-view {
+      padding: 1rem;
+    }
     &__spinner {
       padding-top: 3rem;
       display: flex;

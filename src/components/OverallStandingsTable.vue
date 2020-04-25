@@ -1,3 +1,5 @@
+// *This is acts a container for the router
+
 <template>
   <div class="overall-standings-table">
     <div v-for="(arr, index) in combinedConferences" :key="index">

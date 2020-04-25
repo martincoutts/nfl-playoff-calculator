@@ -2,8 +2,6 @@
   <Fragment>
     <TeamLogo :logo="logo" />
 
-    <p>{{ team.Name }}</p>
-
     <p>{{ team.Wins }}</p>
 
     <p>{{ team.Losses }}</p>
@@ -25,7 +23,7 @@ export default {
     return {
       teamName: this.team.Team,
       html: "",
-      logo: "",
+      logo: ""
     };
   },
   created: function() {
@@ -34,9 +32,10 @@ export default {
   methods: {
     imageImport: function() {
       this.logo = require(`../assets/images/teamImages/svg/${this.team.Conference}/${this.teamName}.svg`);
-    },
-  },
+    }
+  }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

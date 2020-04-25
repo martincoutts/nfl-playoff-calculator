@@ -30,18 +30,19 @@ export default {
     grid-template-rows: auto;
     nav {
       display: grid;
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: minmax(100px, 1fr) 3fr;
+      align-items: center;
+      column-gap: 1rem;
       border-bottom: solid 1px black;
 
       h1 {
         font-size: 18pt;
-        padding: 1rem;
       }
 
       img {
         height: 100px;
 
-        margin-right: -20px;
+        margin-right: -30px;
       }
     }
     &__logo {
@@ -50,6 +51,7 @@ export default {
     &__links {
       grid-column: 2 / span 1;
       display: flex;
+      gap: 1rem;
     }
   }
 }
