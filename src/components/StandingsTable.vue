@@ -49,7 +49,6 @@ export default {
   methods: {
     defineConference: function() {
       if (this.conference === "AFC") {
-        console.log("1", this.conference);
         this.sortedTeams = this.sortedAfc;
       } else {
         this.sortedTeams = this.sortedNfc;
@@ -88,7 +87,7 @@ export default {
     &--header,
     &--team {
       display: grid;
-      grid-template-columns: minmax(20px, 100px) repeat(4, 1fr);
+      grid-template-columns: minmax(100px, 1fr) repeat(4, 1fr);
       grid-template-rows: auto;
       text-align: center;
       padding: 1rem;
