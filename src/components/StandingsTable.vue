@@ -13,7 +13,11 @@
         <h3>T</h3>
         <h3>PCT</h3>
       </div>
-      <div v-for="team in sortedTeams" :key="team.TeamID" class="standings-table__table--team">
+      <div
+        v-for="team in sortedTeams"
+        :key="team.TeamID"
+        class="standings-table__table--team"
+      >
         <TeamRow :team="team" />
       </div>
     </div>
@@ -32,7 +36,7 @@ export default {
     return {
       sortedTeams: "",
       logo: "",
-      bemBase: `${this.conference}-${this.tableType}`
+      bemBase: `${this.conference}-${this.tableType}`,
     };
   },
   created: function() {
@@ -40,7 +44,7 @@ export default {
     this.imageImport();
   },
   computed: {
-    ...mapGetters(["sortedAfc", "sortedNfc"])
+    ...mapGetters(["sortedAfc", "sortedNfc"]),
   },
   methods: {
     defineConference: function() {
@@ -53,8 +57,8 @@ export default {
     },
     imageImport: function() {
       this.logo = require(`../assets/images/conferences//${this.conference}.svg`);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -63,13 +67,14 @@ export default {
 .standings-table {
   display: flex;
   flex-direction: column;
+  padding: 1rem 0;
 
   &__header {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    border-bottom: $general-border;
+    border: $general-border;
   }
   &__logo {
     max-height: 100px;
