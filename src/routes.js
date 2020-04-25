@@ -14,6 +14,11 @@ export default new Router({
       component: OverallStandings,
     },
     {
+      path: "/standings",
+      name: "OverallStandings",
+      component: OverallStandings,
+    },
+    {
       path: "/standings/overall",
       name: "OverallStandings",
       component: OverallStandings,

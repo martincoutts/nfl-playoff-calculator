@@ -80,29 +80,31 @@ export default new Vuex.Store({
       } else return;
     },
     SORT_DIVISIONS: function(state) {
-      state.results.map((team) => {
-        const path = `${team.Conference}${team.Division}`;
+      if (state.AFCNorth.length < 4) {
+        state.results.map((team) => {
+          const path = `${team.Conference}${team.Division}`;
 
-        state[path].push(team);
-        state[path] = sortTeamsFunc(
-          state[path],
-          "Wins",
-          "DivisionWins",
-          "ConferenceWins"
-        );
-      });
-      state.AFCDivs = [
-        state.AFCNorth,
-        state.AFCEast,
-        state.AFCSouth,
-        state.AFCWest,
-      ];
-      state.NFCDivs = [
-        state.NFCNorth,
-        state.NFCEast,
-        state.NFCSouth,
-        state.NFCWest,
-      ];
+          state[path].push(team);
+          state[path] = sortTeamsFunc(
+            state[path],
+            "Wins",
+            "DivisionWins",
+            "ConferenceWins"
+          );
+        });
+        state.AFCDivs = [
+          state.AFCNorth,
+          state.AFCEast,
+          state.AFCSouth,
+          state.AFCWest,
+        ];
+        state.NFCDivs = [
+          state.NFCNorth,
+          state.NFCEast,
+          state.NFCSouth,
+          state.NFCWest,
+        ];
+      } else return;
     },
   },
   actions: {

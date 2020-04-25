@@ -2,14 +2,15 @@
 
 <template>
   <div class="afc-standings-table">
-    <h1>AFC STANDINGS</h1>
-    <!-- <div v-for="(div, index) in afcDivs" :key="index">
+    <div v-for="(div, index) in AFCDivs" :key="index">
       <StandingsTable
-        :title="div.value[0].Conference"
-        :conference="div.value[0].Conference"
+        :title="div[0].Conference"
+        :division="div[0].Division"
+        :conference="div[0].Conference"
         :tableType="'division'"
+        :teams="div"
       />
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -18,13 +19,10 @@ import { mapState, mapActions } from "vuex";
 import StandingsTable from "./StandingsTable";
 export default {
   name: "AfcStandings",
-  // components: { StandingsTable },
+  components: { StandingsTable },
 
-  //   data: function() {
-  //     return {};
-  //   },
   computed: {
-    ...mapState(["afcDivs"]),
+    ...mapState(["AFCDivs"]),
   },
   created: function() {
     this.sortConferences({
