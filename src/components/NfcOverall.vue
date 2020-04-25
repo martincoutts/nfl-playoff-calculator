@@ -1,8 +1,15 @@
 <template>
   <div class="standings__nfc--overall">
-    <h1 class="nfc-overall__title">NFC</h1>
-    <div>
-      <div class="">
+    <div class="nfc-overall__header">
+      <img
+        class="nfc-overall__logo"
+        src="../assets/images/conferences/NFC.svg"
+      />
+      <h1 class="nfc-overall__title">NFC</h1>
+    </div>
+
+    <div class="nfc-overall__table">
+      <div class="nfc-overall__table--header">
         <h3>Logo</h3>
         <h3>Team</h3>
         <h3>W</h3>
@@ -41,15 +48,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-table,
-th,
-td {
-  border: 1px solid black;
-  padding: 0 1rem 0 0;
-}
 .nfc-overall {
+  &__header {
+    display: flex;
+  }
+  &__logo {
+    max-height: 100px;
+    max-width: 100px;
+  }
   &__team {
     display: flex;
+  }
+  &__table {
+    &--header {
+      display: flex;
+    }
   }
 }
 </style>

@@ -1,15 +1,8 @@
 <template>
   <div>
-    Main Standings
     <OverallStandingsTable
       :results="this.results"
       :sortTeams="this.sortTeams"
-      :conference="'AFC'"
-    />
-    <OverallStandingsTable
-      :results="this.results"
-      :sortTeams="this.sortTeams"
-      :conference="'NFC'"
     />
   </div>
 </template>

@@ -1,11 +1,11 @@
 <template>
-  <div class="standings__afc--overall">
-    <div class="afc-overall__header">
+  <div class="standings__nfc--overall">
+    <div class="nfc-overall__header">
       <img
-        class="afc-overall__logo"
-        src="../assets/images/conferences/AFC.svg"
+        class="nfc-overall__logo"
+        src="../assets/images/conferences/NFC.svg"
       />
-      <h1 class="afc-overall__title">AFC</h1>
+      <h1 class="nfc-overall__title">NFC</h1>
     </div>
 
     <div class="nfc-overall__table">
@@ -17,7 +17,7 @@
         <h3>T</h3>
         <h3>PCT</h3>
       </div>
-      <div v-for="team in teams" :key="team.TeamID" class="afc-overall__team">
+      <div v-for="team in teams" :key="team.TeamID" class="nfc-overall__team">
         <TeamRow :team="team" />
       </div>
     </div>
@@ -27,7 +27,7 @@
 <script>
 import TeamRow from "./TeamRow";
 export default {
-  name: "AfcOverall",
+  name: "StandingsTable",
   props: ["teams", "sortTeams"],
   components: { TeamRow },
   data: function() {
@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.afc-overall {
+.nfc-overall {
   &__header {
     display: flex;
   }
