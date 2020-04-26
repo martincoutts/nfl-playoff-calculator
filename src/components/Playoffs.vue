@@ -1,18 +1,20 @@
 <template>
   <div>
-    <h1>Playoffs</h1>
-    <PlayoffBracket />
+    <div v-for="(conference, index) in playoffsCombined" :key="index">
+      <PlayoffConference :conference="conference" />
+    </div>
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
-import PlayoffBracket from "./PlayoffBracket";
+
+import PlayoffConference from "./PlayoffConference";
 export default {
   name: "Playoffs",
-  components: { PlayoffBracket },
+  components: { PlayoffConference },
   computed: {
-    ...mapState(["afcPlayoffs", "nfcPlayoffs"]),
+    ...mapState(["afcPlayoffs", "nfcPlayoffs", "playoffsCombined"]),
   },
 };
 </script>

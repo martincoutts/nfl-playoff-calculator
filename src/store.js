@@ -76,6 +76,7 @@ export default new Vuex.Store({
     nfc: [],
     afcPlayoffs: [],
     nfcPlayoffs: [],
+    playoffsCombined: [],
     combinedConferences: [],
     AFCNorth: [],
     AFCEast: [],
@@ -179,6 +180,7 @@ export default new Vuex.Store({
         getWildCards(this.getters.sortedNfc, nfcDivisionPlayoffs, nfcTeamNames);
         state.afcPlayoffs = sortChamps(afcPlayoffsSorted, afcDivisionPlayoffs);
         state.nfcPlayoffs = sortChamps(nfcPlayoffsSorted, nfcDivisionPlayoffs);
+        state.playoffsCombined = [state.afcPlayoffs, state.nfcPlayoffs];
       } else return;
     },
   },

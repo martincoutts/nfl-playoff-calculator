@@ -1,8 +1,8 @@
 <template>
   <div class="bracket__wrapper">
-    <div class="bracket__team bracket__team--away">LOGO</div>
+    <div class="bracket__team bracket__team--away">{{ away.Name }}</div>
     <div class="bracket__spacer"></div>
-    <div class="bracket__team bracket__team--home">LOGO</div>
+    <div class="bracket__team bracket__team--home">{{ home.Name }}</div>
     <div class="bracket__vertical-line bracket__vertical-line--left"></div>
     <div class="bracket__vertical-line bracket__vertical-line--right"></div>
     <div class="bracket__horizontal-line"></div>
@@ -12,6 +12,7 @@
 <script>
 export default {
   name: "PlayoffBracket",
+  props: ["away", "home"],
 };
 </script>
 
@@ -24,7 +25,7 @@ export default {
     grid-template-rows: auto auto;
   }
   &__team {
-    padding: 20px;
+    // padding: 20px;
     border: $general-border;
     &--away {
       grid-column: 1 / span 2;
