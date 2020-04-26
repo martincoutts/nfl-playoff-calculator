@@ -44,12 +44,38 @@ const getWildCards = (conferenceArray, playoffMap, champsArr) => {
   });
 };
 
+const sortChamps = (conferenceArray, playoffMap) => {
+  const slicedArray = [];
+  const wildCards = [];
+  const sliceMap = (team, index) => {
+    if (index === "5" || index === "6") {
+      wildCards.push(team.team);
+    } else {
+      slicedArray.push(team[0]);
+    }
+  };
+
+  playoffMap.forEach(sliceMap);
+  const sortedChamps = sortTeamsFunc(
+    slicedArray,
+    "Wins",
+    "DivisionWins",
+    "ConferenceWins"
+  );
+  console.log("sortedChamps", wildCards);
+  conferenceArray = [...sortedChamps, ...wildCards];
+
+  return conferenceArray;
+};
+
 export default new Vuex.Store({
   state: {
     hasResults: false,
     results: {},
     afc: [],
     nfc: [],
+    afcPlayoffs: [],
+    nfcPlayoffs: [],
     combinedConferences: [],
     AFCNorth: [],
     AFCEast: [],
@@ -72,7 +98,7 @@ export default new Vuex.Store({
     FETCH_DATA: async function(state, actions) {
       try {
         const res = await fetch(
-          `https://api.sportsdata.io/v3/nfl/scores/json/Standings/2019t?key=140e225b3d41407a9e77efaed16b3247`
+          `https://api.sportsdata.io/v3/nfl/scores/json/Standings/2019?key=140e225b3d41407a9e77efaed16b3247`
         );
         const data = await res.json();
 
@@ -137,18 +163,22 @@ export default new Vuex.Store({
           ["South", []],
           ["West", []],
         ]);
+        let afcPlayoffsSorted;
         const nfcDivisionPlayoffs = new Map([
           ["North", []],
           ["East", []],
           ["South", []],
           ["West", []],
         ]);
+        let nfcPlayoffsSorted;
 
         getDivisionChamps(state.AFCDivs, afcDivisionPlayoffs, afcTeamNames);
         getDivisionChamps(state.NFCDivs, nfcDivisionPlayoffs, nfcTeamNames);
 
         getWildCards(this.getters.sortedAfc, afcDivisionPlayoffs, afcTeamNames);
         getWildCards(this.getters.sortedNfc, nfcDivisionPlayoffs, nfcTeamNames);
+        state.afcPlayoffs = sortChamps(afcPlayoffsSorted, afcDivisionPlayoffs);
+        state.nfcPlayoffs = sortChamps(nfcPlayoffsSorted, nfcDivisionPlayoffs);
       } else return;
     },
   },
