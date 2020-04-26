@@ -62,7 +62,7 @@ const sortChamps = (conferenceArray, playoffMap) => {
     "DivisionWins",
     "ConferenceWins"
   );
-  console.log("sortedChamps", wildCards);
+
   conferenceArray = [...sortedChamps, ...wildCards];
 
   return conferenceArray;
