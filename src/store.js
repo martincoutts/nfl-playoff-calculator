@@ -30,6 +30,16 @@ export default new Vuex.Store({
     afc: [],
     nfc: [],
     combinedConferences: [],
+    AFCNorth: [],
+    AFCEast: [],
+    AFCSouth: [],
+    AFCWest: [],
+    AFCDivs: [],
+    NFCNorth: [],
+    NFCEast: [],
+    NFCSouth: [],
+    NFCWest: [],
+    NFCDivs: [],
   },
   getters: {
     sortedAfc: (state) =>
@@ -38,7 +48,7 @@ export default new Vuex.Store({
       sortTeamsFunc(state.nfc, "Wins", "DivisionWins", "ConferenceWins"),
   },
   mutations: {
-    FETCH_DATA: async function(state) {
+    FETCH_DATA: async function(state, actions) {
       try {
         const res = await fetch(
           `https://api.sportsdata.io/v3/nfl/scores/json/Standings/2019t?key=140e225b3d41407a9e77efaed16b3247`
@@ -48,6 +58,7 @@ export default new Vuex.Store({
         state.results = data;
         if (res.json()) {
           state.hasResults = state.results.length > 0;
+          actions.test();
         }
       } catch (e) {
         console.log(e);
@@ -55,12 +66,45 @@ export default new Vuex.Store({
     },
 
     SORT_CONFERENCES: function(state, payload) {
-      state.results.map((team) => {
-        team.Conference === payload.conference
-          ? state[payload.conferenceArray].push(team)
-          : null;
-      });
-      state.combinedConferences = [state.afc, state.nfc];
+      if (
+        !state.afc.length ||
+        !state.nfc.length ||
+        !payload.sortDivisions !== true
+      ) {
+        state.results.map((team) => {
+          team.Conference === payload.conference
+            ? state[payload.conferenceArray].push(team)
+            : null;
+        });
+        state.combinedConferences = [state.afc, state.nfc];
+      } else return;
+    },
+    SORT_DIVISIONS: function(state) {
+      if (state.AFCNorth.length < 4) {
+        state.results.map((team) => {
+          const path = `${team.Conference}${team.Division}`;
+
+          state[path].push(team);
+          state[path] = sortTeamsFunc(
+            state[path],
+            "Wins",
+            "DivisionWins",
+            "ConferenceWins"
+          );
+        });
+        state.AFCDivs = [
+          state.AFCNorth,
+          state.AFCEast,
+          state.AFCSouth,
+          state.AFCWest,
+        ];
+        state.NFCDivs = [
+          state.NFCNorth,
+          state.NFCEast,
+          state.NFCSouth,
+          state.NFCWest,
+        ];
+      } else return;
     },
   },
   actions: {
@@ -72,6 +116,7 @@ export default new Vuex.Store({
     },
     sortConferences: (context, payload) => {
       context.commit("SORT_CONFERENCES", payload);
+      context.commit("SORT_DIVISIONS");
     },
   },
 });

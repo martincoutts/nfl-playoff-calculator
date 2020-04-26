@@ -2,7 +2,7 @@
   <div class="standings-table">
     <div class="standings-table__header">
       <TeamLogo class="standings-table__logo" :logo="logo" />
-      <h1 class="standings-table__title">{{ title }}</h1>
+      <h1 class="standings-table__title">{{ title }} {{ division }}</h1>
     </div>
 
     <div class="standings-table__table">
@@ -13,26 +13,42 @@
         <h3>T</h3>
         <h3>PCT</h3>
       </div>
-      <div v-for="team in sortedTeams" :key="team.TeamID" class="standings-table__table--team">
-        <TeamRow :team="team" />
-      </div>
+
+      <Fragment v-if="tableType === 'overall'">
+        <div
+          v-for="team in sortedTeams"
+          :key="team.TeamID"
+          class="standings-table__table--team"
+        >
+          <TeamRow :team="team" /></div
+      ></Fragment>
+      <Fragment v-else-if="tableType === 'division'">
+        <div
+          v-for="team in teams"
+          :key="team.TeamID"
+          class="standings-table__table--team"
+        >
+          <TeamRow :team="team" />
+        </div>
+      </Fragment>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import { Fragment } from "vue-fragment";
 import TeamRow from "./TeamRow";
 import TeamLogo from "./TeamLogo";
 export default {
   name: "StandingsTable",
-  props: ["teams", "title", "conference", "tableType"],
+  props: ["teams", "title", "conference", "tableType", "division"],
   components: { TeamRow, TeamLogo },
   data: function() {
     return {
       sortedTeams: "",
       logo: "",
-      bemBase: `${this.conference}-${this.tableType}`
+      bemBase: `${this.conference}-${this.tableType}`,
     };
   },
   created: function() {
@@ -40,12 +56,11 @@ export default {
     this.imageImport();
   },
   computed: {
-    ...mapGetters(["sortedAfc", "sortedNfc"])
+    ...mapGetters(["sortedAfc", "sortedNfc"]),
   },
   methods: {
     defineConference: function() {
       if (this.conference === "AFC") {
-        console.log("1", this.conference);
         this.sortedTeams = this.sortedAfc;
       } else {
         this.sortedTeams = this.sortedNfc;
@@ -53,8 +68,8 @@ export default {
     },
     imageImport: function() {
       this.logo = require(`../assets/images/conferences//${this.conference}.svg`);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -63,13 +78,14 @@ export default {
 .standings-table {
   display: flex;
   flex-direction: column;
+  padding: 1rem 0;
 
   &__header {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    border-bottom: $general-border;
+    border: $general-border;
   }
   &__logo {
     max-height: 100px;
@@ -83,7 +99,7 @@ export default {
     &--header,
     &--team {
       display: grid;
-      grid-template-columns: minmax(20px, 100px) repeat(4, 1fr);
+      grid-template-columns: minmax(100px, 1fr) repeat(4, 1fr);
       grid-template-rows: auto;
       text-align: center;
       padding: 1rem;

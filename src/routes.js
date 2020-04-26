@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import MainStandings from "./components/MainStandings.vue";
+import OverallStandings from "./components/OverallStandings.vue";
 import AfcStandings from "./components/AfcStandings.vue";
 import NfcStandings from "./components/NfcStandings.vue";
 
@@ -10,13 +10,18 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "MainStandings",
-      component: MainStandings,
+      name: "OverallStandings",
+      component: OverallStandings,
+    },
+    {
+      path: "/standings",
+      name: "OverallStandings",
+      component: OverallStandings,
     },
     {
       path: "/standings/overall",
-      name: "MainStandings",
-      component: MainStandings,
+      name: "OverallStandings",
+      component: OverallStandings,
     },
     {
       path: "/standings/afc",

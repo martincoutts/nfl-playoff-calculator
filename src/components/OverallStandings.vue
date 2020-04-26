@@ -16,7 +16,7 @@
 import { mapState, mapActions } from "vuex";
 import StandingsTable from "./StandingsTable";
 export default {
-  name: "OverallStandingsTable",
+  name: "OverallStandings",
   components: { StandingsTable },
 
   data: function() {
