@@ -3,6 +3,7 @@ import Router from "vue-router";
 import OverallStandings from "./components/OverallStandings.vue";
 import AfcStandings from "./components/AfcStandings.vue";
 import NfcStandings from "./components/NfcStandings.vue";
+import Playoffs from "./components/Playoffs.vue";
 
 Vue.use(Router);
 export default new Router({
@@ -32,6 +33,11 @@ export default new Router({
       path: "/standings/nfc",
       name: "NfcStandings",
       component: NfcStandings,
+    },
+    {
+      path: "/playoffs",
+      name: "Playoffs",
+      component: Playoffs,
     },
   ],
 });

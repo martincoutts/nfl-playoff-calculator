@@ -23,6 +23,27 @@ const sortTeamsFunc = function(arr, customVarA, customVarB, customVarC) {
   return sortedArr;
 };
 
+const getDivisionChamps = (divisionArray, champsMap, teamNameArr) => {
+  divisionArray.map((division) => {
+    const champ = division[0];
+    champsMap.get(champ.Division).push(champ);
+    teamNameArr.push(champ.Team);
+  });
+};
+
+const getWildCards = (conferenceArray, playoffMap, champsArr) => {
+  const wildCards = [];
+  conferenceArray.map((conferenceTeam) => {
+    const isChamp = champsArr.includes(conferenceTeam.Team);
+
+    !isChamp && wildCards.length < 2 ? wildCards.push(conferenceTeam) : null;
+  });
+
+  wildCards.map((team, index) => {
+    playoffMap.set(`${index + 5}`, { team });
+  });
+};
+
 export default new Vuex.Store({
   state: {
     hasResults: false,
@@ -106,6 +127,30 @@ export default new Vuex.Store({
         ];
       } else return;
     },
+    GET_PLAYOFFS: function(state) {
+      if (state.results.length) {
+        const afcTeamNames = [];
+        const nfcTeamNames = [];
+        const afcDivisionPlayoffs = new Map([
+          ["North", []],
+          ["East", []],
+          ["South", []],
+          ["West", []],
+        ]);
+        const nfcDivisionPlayoffs = new Map([
+          ["North", []],
+          ["East", []],
+          ["South", []],
+          ["West", []],
+        ]);
+
+        getDivisionChamps(state.AFCDivs, afcDivisionPlayoffs, afcTeamNames);
+        getDivisionChamps(state.NFCDivs, nfcDivisionPlayoffs, nfcTeamNames);
+
+        getWildCards(this.getters.sortedAfc, afcDivisionPlayoffs, afcTeamNames);
+        getWildCards(this.getters.sortedNfc, nfcDivisionPlayoffs, nfcTeamNames);
+      } else return;
+    },
   },
   actions: {
     fetchData: ({ commit }) => {
@@ -117,6 +162,7 @@ export default new Vuex.Store({
     sortConferences: (context, payload) => {
       context.commit("SORT_CONFERENCES", payload);
       context.commit("SORT_DIVISIONS");
+      context.commit("GET_PLAYOFFS");
     },
   },
 });
