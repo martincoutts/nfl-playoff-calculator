@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <h1>PLAYOFF CONFERENCE</h1>
+  <div :class="conference[0].Conference">
     <WildCardWeekend :conference="conference" />
     <DivisionalRound :conference="conference" />
     <ConferenceChampionship :conference="conference" />
