@@ -1,11 +1,33 @@
 <template>
-  <div><img v-bind:src="logo" /></div>
+  <div v-if="type !== 'playoff'">
+    <img v-bind:src="logo" />
+  </div>
+  <div v-else>
+    <img v-bind:src="playoffLogo" />
+  </div>
 </template>
 
 <script>
 export default {
   name: "TeamLogo",
-  props: ["logo"],
+  props: ["logo", "type", "team"],
+  data: function() {
+    return {
+      teamName: this.team.Team,
+
+      playoffLogo: ""
+    };
+  },
+  created: function() {
+    this.imageImport();
+  },
+  methods: {
+    imageImport: function() {
+      if (this.type === "playoff") {
+        this.playoffLogo = require(`../assets/images/teamImages/svg/${this.team.Conference}/${this.teamName}.svg`);
+      } else return;
+    }
+  }
 };
 </script>
 
