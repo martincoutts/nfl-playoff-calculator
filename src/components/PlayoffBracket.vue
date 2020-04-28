@@ -14,6 +14,7 @@
     <div class="bracket__vertical-line bracket__vertical-line--left"></div>
     <div class="bracket__vertical-line bracket__vertical-line--right"></div>
     <div class="bracket__horizontal-line"></div>
+    <div class="bracket__vertical-line bracket__vertical-line--center"></div>
   </div>
 </template>
 
@@ -30,7 +31,7 @@ export default {
   &__wrapper {
     display: grid;
     grid-template-columns: auto auto 1fr auto auto;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto auto 1fr;
   }
   &__team {
     // padding: 20px;
@@ -54,11 +55,18 @@ export default {
       border-right: $playoff-line;
       grid-column: 4 / span 1;
     }
+    &--center {
+      border-right: $playoff-line;
+      grid-column: 3 / span 1;
+      grid-row: 3 / span 1;
+      justify-self: center;
+    }
   }
   &__horizontal-line {
     padding: 20px;
     border-top: $playoff-line;
     grid-column: 2 / span 3;
+    grid-row: 3 / span 1;
   }
 }
 </style>
