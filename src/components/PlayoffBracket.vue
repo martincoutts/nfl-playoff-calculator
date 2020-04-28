@@ -1,12 +1,16 @@
 <template>
   <div class="bracket__wrapper">
-    <div v-if="away !== undefined" class="bracket__team bracket__team--away">{{ away.Name }}</div>
+    <div v-if="away !== undefined" class="bracket__team bracket__team--away">
+      <TeamLogo :team="away" :type="'playoff'" />
+    </div>
     <div
       v-if="awayText !== undefined || awayText !== ''"
       class="bracket__team bracket__team--away"
     >{{ awayText }}</div>
     <div class="bracket__spacer"></div>
-    <div v-if="home !== undefined" class="bracket__team bracket__team--home">{{ home.Name }}</div>
+    <div v-if="home !== undefined" class="bracket__team bracket__team--home">
+      <TeamLogo :team="home" :type="'playoff'" />
+    </div>
     <div
       v-if="homeText !== undefined || homeText !== ''"
       class="bracket__team bracket__team--home"
@@ -19,9 +23,14 @@
 </template>
 
 <script>
+import TeamLogo from "./TeamLogo";
 export default {
   name: "PlayoffBracket",
-  props: ["away", "home", "awayText", "homeText"]
+
+  props: ["away", "home", "awayText", "homeText"],
+  components: {
+    TeamLogo
+  }
 };
 </script>
 
