@@ -1,14 +1,16 @@
 <template>
   <div class="wild-card">
-    <PlayoffBracket :away="conference[4]" :home="conference[3]" />
-    <PlayoffBracket :away="conference[5]" :home="conference[2]" />
+    <PlayoffBracket
+      :awayText="'Winner of 2nd seed divisional match'"
+      :homeText="'Winner of 1st seed divisional match'"
+    />
   </div>
 </template>
 
 <script>
 import PlayoffBracket from "./PlayoffBracket";
 export default {
-  name: "WildCardWeekend",
+  name: "ConferenceChampionship",
 
   components: { PlayoffBracket },
   props: ["conference"]

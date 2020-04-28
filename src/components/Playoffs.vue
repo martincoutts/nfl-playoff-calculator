@@ -3,6 +3,7 @@
     <div v-for="(conference, index) in playoffsCombined" :key="index">
       <PlayoffConference :conference="conference" />
     </div>
+    <Superbowl />
   </div>
 </template>
 
@@ -10,12 +11,13 @@
 import { mapState } from "vuex";
 
 import PlayoffConference from "./PlayoffConference";
+import Superbowl from "./Superbowl";
 export default {
   name: "Playoffs",
-  components: { PlayoffConference },
+  components: { PlayoffConference, Superbowl },
   computed: {
-    ...mapState(["afcPlayoffs", "nfcPlayoffs", "playoffsCombined"]),
-  },
+    ...mapState(["afcPlayoffs", "nfcPlayoffs", "playoffsCombined"])
+  }
 };
 </script>
 
