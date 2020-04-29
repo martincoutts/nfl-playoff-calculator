@@ -18,31 +18,30 @@
 
 <script>
 export default {
-  name: "SubNav",
+  name: "SubNav"
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../scss/index.scss";
-@include sm {
-  .sub-nav {
-    nav {
-      display: grid;
-      grid-template-columns: minmax(100px, 1fr) 3fr;
-      align-items: center;
-      column-gap: 1rem;
-      border-bottom: solid 1px black;
 
-      h1 {
-        font-size: 12pt;
-        padding: 0.5rem;
-      }
+.sub-nav {
+  nav {
+    display: grid;
+    grid-template-columns: minmax(100px, 1fr) 3fr;
+    align-items: center;
+    column-gap: 1rem;
+    border-bottom: solid 1px black;
+
+    h1 {
+      font-size: 12pt;
+      padding: 0.5rem;
     }
-    &__links {
-      grid-column: 2 / span 1;
-      display: flex;
-      gap: 1rem;
-    }
+  }
+  &__links {
+    grid-column: 2 / span 1;
+    display: flex;
+    gap: 1rem;
   }
 }
 </style>

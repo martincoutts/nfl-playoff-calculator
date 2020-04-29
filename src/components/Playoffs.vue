@@ -39,6 +39,7 @@ export default {
 .playoffs {
   &__main-wrapper {
     display: grid;
+
     grid-template-rows: 1fr minmax(400px, 1fr) 1fr;
   }
 }

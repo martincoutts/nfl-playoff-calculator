@@ -18,47 +18,39 @@
 
 <script>
 export default {
-  name: "MainNav",
+  name: "MainNav"
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../scss/index.scss";
 
-@include sm {
-  .main-nav {
-    grid-template-rows: auto;
-    nav {
-      display: grid;
-      grid-template-columns: minmax(100px, 1fr) 3fr;
-      align-items: center;
-      column-gap: 1rem;
-      border-bottom: solid 1px black;
+.main-nav {
+  grid-template-rows: auto;
+  nav {
+    display: grid;
+    grid-template-columns: minmax(100px, 1fr) 3fr;
+    align-items: center;
+    column-gap: 1rem;
+    border-bottom: solid 1px black;
 
-      h1 {
-        font-size: 18pt;
-      }
-
-      img {
-        height: 100px;
-
-        margin-right: -30px;
-      }
+    h1 {
+      font-size: 18pt;
     }
-    &__logo {
-      grid-column: 1 / span 1;
-    }
-    &__links {
-      grid-column: 2 / span 1;
-      display: flex;
-      gap: 1rem;
+
+    img {
+      height: 100px;
+
+      margin-right: -30px;
     }
   }
-}
-
-@include lg {
-  // nav {
-  //   background-color: blue;
-  // }
+  &__logo {
+    grid-column: 1 / span 1;
+  }
+  &__links {
+    grid-column: 2 / span 1;
+    display: flex;
+    gap: 1rem;
+  }
 }
 </style>
