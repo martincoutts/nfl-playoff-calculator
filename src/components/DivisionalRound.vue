@@ -1,7 +1,7 @@
 <template>
   <div class="divisonal-round">
-    <PlayoffBracket class="bracket--1" :awayText="'?'" :home="conference[1]" />
-    <PlayoffBracket class="bracket--2" :awayText="'?'" :home="conference[0]" />
+    <PlayoffBracket class="bracket--1" :awayText="''" :home="conference[1]" />
+    <PlayoffBracket class="bracket--2" :awayText="''" :home="conference[0]" />
   </div>
 </template>
 
@@ -16,18 +16,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../scss/index.scss";
 .divisonal-round {
   display: grid;
   grid-template-columns: auto auto;
   column-gap: 1rem;
+  padding: 0 1rem;
 
-  .bracket {
-    &--1 {
-      grid-column: 2 / span 1;
-    }
-    &--2 {
-      grid-column: 4 / span 1;
-    }
+  @include lg {
+    padding: 0 10rem;
   }
 }
 </style>

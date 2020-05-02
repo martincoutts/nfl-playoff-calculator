@@ -22,15 +22,8 @@ export default {
 .AFC,
 .NFC {
   display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-columns: auto;
-
-  .divisional-round {
-    &__wrapper {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr auto 1fr;
-    }
-  }
+  grid-template-rows: repeat(3 auto);
+  row-gap: 1rem;
 }
 
 .AFC {
@@ -45,6 +38,7 @@ export default {
   }
 }
 .NFC {
+  align-self: center;
   .wild-card {
     grid-row: 3 / span 1;
   }
