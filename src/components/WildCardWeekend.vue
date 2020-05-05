@@ -25,5 +25,12 @@ export default {
   @include md {
     padding: 0 5%;
   }
+
+  @include lg {
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+    padding: 10% 0;
+  }
 }
 </style>

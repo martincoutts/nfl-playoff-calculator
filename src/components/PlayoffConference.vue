@@ -40,11 +40,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../scss/index.scss";
 .AFC,
 .NFC {
   display: grid;
   grid-template-rows: repeat(4, auto);
   row-gap: 1rem;
+
+  @include lg {
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: 80vh;
+  }
 
   .playoff-conference {
     &__logo {
@@ -56,30 +62,58 @@ export default {
 .AFC {
   .wild-card {
     grid-row: 2 / span 1;
+    @include lg {
+      grid-row: 1 / span 1;
+      grid-column: 2 / span 1;
+    }
   }
   .divisional-round {
     grid-row: 3 / span 1;
+    @include lg {
+      grid-row: 1 / span 1;
+      grid-column: 3 / span 1;
+    }
   }
   .conference-championship {
     grid-row: 4 / span 1;
+    @include lg {
+      grid-row: 1 / span 1;
+      grid-column: 4 / span 1;
+    }
   }
 }
 .NFC {
   align-self: center;
   .wild-card {
     grid-row: 3 / span 1;
+    @include lg {
+      grid-row: 1 / span 1;
+      grid-column: 3 / span 1;
+    }
   }
   .divisional-round {
     grid-row: 2 / span 1;
+    @include lg {
+      grid-row: 1 / span 1;
+      grid-column: 2 / span 1;
+    }
   }
   .conference-championship {
     grid-row: 1 / span 1;
+    @include lg {
+      grid-row: 1 / span 1;
+      grid-column: 1 / span 1;
+    }
   }
   .playoff-conference {
     &__logo {
       grid-row: 4 / span 1;
       -webkit-transform: rotateX(180deg);
       transform: rotateX(180deg);
+      @include lg {
+        grid-row: 1 / span 1;
+        grid-column: 4 / span 1;
+      }
     }
   }
 }

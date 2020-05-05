@@ -6,7 +6,9 @@
     <div
       v-if="awayText !== undefined"
       class="bracket__team bracket__team--text bracket__team--away-text"
-    >{{ awayText }}</div>
+    >
+      <img src="../assets/images/playoffs/questionMark.svg" />
+    </div>
 
     <div v-if="home !== undefined" class="bracket__team bracket__team--home">
       <TeamLogo :team="home" :type="'playoff'" />
@@ -38,6 +40,11 @@ export default {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
     border: $general-border;
+
+    @include lg {
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: 1fr;
+    }
   }
 
   &__team {
@@ -47,11 +54,21 @@ export default {
     &--away,
     &--away-text {
       grid-column: 1 / span 1;
+      @include lg {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+      }
     }
     &--home,
     &--home-text {
       grid-column: 2 / span 1;
       border-left: $general-border;
+      @include lg {
+        grid-column: 1 / span 1;
+        grid-row: 2 / span 1;
+        border-top: $general-border;
+        border-left: none;
+      }
     }
 
     &--away-text,
@@ -59,9 +76,11 @@ export default {
       height: $logo-max-size-mobile;
       width: $logo-max-size-mobile;
 
-      @include md {
-        height: $logo-max-size-desktop;
-        width: $logo-max-size-desktop;
+      @include lg {
+        max-height: $logo-max-size-desktop;
+        max-width: $logo-max-size-desktop;
+        align-self: center;
+        justify-self: center;
       }
     }
   }
