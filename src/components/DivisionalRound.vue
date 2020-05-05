@@ -1,7 +1,7 @@
 <template>
-  <div class="wild-card">
-    <PlayoffBracket :awayText="'Winner of 3rd seed Vs 6th seed'" :home="conference[1]" />
-    <PlayoffBracket :awayText="'Winner of 4th seed Vs 5th seed'" :home="conference[0]" />
+  <div class="divisonal-round">
+    <PlayoffBracket class="bracket--1" :awayText="''" :home="conference[1]" />
+    <PlayoffBracket class="bracket--2" :awayText="''" :home="conference[0]" />
   </div>
 </template>
 
@@ -16,9 +16,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.wild-card {
+@import "../scss/index.scss";
+.divisonal-round {
   display: grid;
   grid-template-columns: auto auto;
   column-gap: 1rem;
+  padding: 0 1rem;
+
+  @include md {
+    padding: 0 15%;
+  }
 }
 </style>

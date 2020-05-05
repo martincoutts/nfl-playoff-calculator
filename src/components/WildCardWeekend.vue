@@ -16,9 +16,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../scss/index.scss";
 .wild-card {
   display: grid;
   grid-template-columns: auto auto;
   column-gap: 1rem;
+
+  @include md {
+    padding: 0 5%;
+  }
 }
 </style>

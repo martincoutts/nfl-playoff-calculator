@@ -32,8 +32,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../scss/index.scss";
 img {
-  max-height: 100px;
-  max-width: 100px;
+  max-height: $logo-max-size-mobile;
+  max-width: $logo-max-size-mobile;
+
+  @include md {
+    max-height: $logo-max-size-desktop;
+    max-width: $logo-max-size-desktop;
+  }
 }
 </style>

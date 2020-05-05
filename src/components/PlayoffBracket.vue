@@ -4,21 +4,17 @@
       <TeamLogo :team="away" :type="'playoff'" />
     </div>
     <div
-      v-if="awayText !== undefined || awayText !== ''"
-      class="bracket__team bracket__team--away"
+      v-if="awayText !== undefined"
+      class="bracket__team bracket__team--text bracket__team--away-text"
     >{{ awayText }}</div>
-    <div class="bracket__spacer"></div>
+
     <div v-if="home !== undefined" class="bracket__team bracket__team--home">
       <TeamLogo :team="home" :type="'playoff'" />
     </div>
     <div
-      v-if="homeText !== undefined || homeText !== ''"
-      class="bracket__team bracket__team--home"
+      v-if="homeText !== undefined"
+      class="bracket__team bracket__team--text bracket__team--home-text"
     >{{ homeText }}</div>
-    <div class="bracket__vertical-line bracket__vertical-line--left"></div>
-    <div class="bracket__vertical-line bracket__vertical-line--right"></div>
-    <div class="bracket__horizontal-line"></div>
-    <div class="bracket__vertical-line bracket__vertical-line--center"></div>
   </div>
 </template>
 
@@ -39,43 +35,35 @@ export default {
 .bracket {
   &__wrapper {
     display: grid;
-    grid-template-columns: auto auto 1fr auto auto;
-    grid-template-rows: auto auto 1fr;
-  }
-  &__team {
-    // padding: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
     border: $general-border;
-    &--away {
-      grid-column: 1 / span 2;
-      grid-row: 1 / span 1;
-    }
-    &--home {
-      grid-column: 4 / span 2;
-      grid-row: 1 / span 1;
-    }
   }
-  &__vertical-line {
-    padding: 20px;
-    &--left {
-      border-right: $playoff-line;
+
+  &__team {
+    display: flex;
+    justify-content: center;
+
+    &--away,
+    &--away-text {
       grid-column: 1 / span 1;
     }
-    &--right {
-      border-right: $playoff-line;
-      grid-column: 4 / span 1;
+    &--home,
+    &--home-text {
+      grid-column: 2 / span 1;
+      border-left: $general-border;
     }
-    &--center {
-      border-right: $playoff-line;
-      grid-column: 3 / span 1;
-      grid-row: 3 / span 1;
-      justify-self: center;
+
+    &--away-text,
+    &--home-text {
+      height: $logo-max-size-mobile;
+      width: $logo-max-size-mobile;
+
+      @include md {
+        height: $logo-max-size-desktop;
+        width: $logo-max-size-desktop;
+      }
     }
-  }
-  &__horizontal-line {
-    padding: 20px;
-    border-top: $playoff-line;
-    grid-column: 2 / span 3;
-    grid-row: 3 / span 1;
   }
 }
 </style>

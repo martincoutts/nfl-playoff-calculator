@@ -22,20 +22,26 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["hasResults"]),
+    ...mapState(["hasResults"])
   },
   created: function() {
     this.fetchData();
   },
   methods: {
-    ...mapActions(["fetchData"]),
-  },
+    ...mapActions(["fetchData"])
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 #app {
+  body {
+    margin: 0;
+    padding: 0;
+  }
   .app {
+    height: 100vh;
+    margin: 0;
     &__router-view {
       padding: 1rem;
     }

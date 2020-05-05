@@ -1,9 +1,6 @@
 <template>
-  <div class="wild-card">
-    <PlayoffBracket
-      :awayText="'Winner of 2nd seed divisional match'"
-      :homeText="'Winner of 1st seed divisional match'"
-    />
+  <div class="conference-championship">
+    <PlayoffBracket :awayText="''" :homeText="''" />
   </div>
 </template>
 
@@ -18,9 +15,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.wild-card {
-  display: grid;
-  grid-template-columns: auto auto;
-  column-gap: 1rem;
+@import "../scss/index.scss";
+.conference-championship {
+  justify-content: center;
+  padding: 0 5rem;
+
+  @include md {
+    padding: 0 30%;
+  }
 }
 </style>
