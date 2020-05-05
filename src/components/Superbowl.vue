@@ -33,7 +33,7 @@ export default {
     max-height: $superbowl-logo-max-size-mobile;
     max-width: $superbowl-logo-max-size-mobile;
 
-    @include lg {
+    @include md {
       max-height: $superbowl-logo-max-size-desktop;
       max-width: $superbowl-logo-max-size-desktop;
     }

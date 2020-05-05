@@ -59,7 +59,7 @@ export default {
       height: $logo-max-size-mobile;
       width: $logo-max-size-mobile;
 
-      @include lg {
+      @include md {
         height: $logo-max-size-desktop;
         width: $logo-max-size-desktop;
       }

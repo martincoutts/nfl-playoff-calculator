@@ -22,8 +22,8 @@ export default {
   grid-template-columns: auto auto;
   column-gap: 1rem;
 
-  @include lg {
-    padding: 0 2rem;
+  @include md {
+    padding: 0 5%;
   }
 }
 </style>

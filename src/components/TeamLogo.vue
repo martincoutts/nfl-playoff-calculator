@@ -37,7 +37,7 @@ img {
   max-height: $logo-max-size-mobile;
   max-width: $logo-max-size-mobile;
 
-  @include lg {
+  @include md {
     max-height: $logo-max-size-desktop;
     max-width: $logo-max-size-desktop;
   }

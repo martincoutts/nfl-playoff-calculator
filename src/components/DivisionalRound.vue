@@ -23,8 +23,8 @@ export default {
   column-gap: 1rem;
   padding: 0 1rem;
 
-  @include lg {
-    padding: 0 10rem;
+  @include md {
+    padding: 0 15%;
   }
 }
 </style>

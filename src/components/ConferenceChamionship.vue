@@ -20,8 +20,8 @@ export default {
   justify-content: center;
   padding: 0 5rem;
 
-  @include lg {
-    padding: 0 20rem;
+  @include md {
+    padding: 0 30%;
   }
 }
 </style>
