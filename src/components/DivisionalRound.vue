@@ -31,6 +31,7 @@ export default {
     grid-template-rows: auto auto;
     grid-template-columns: 1fr;
     row-gap: 1rem;
+    padding: 50% 0;
   }
 }
 </style>

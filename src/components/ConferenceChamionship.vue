@@ -25,9 +25,11 @@ export default {
   }
 
   @include lg {
+    display: grid;
+    grid-template-columns: auto;
     grid-template-rows: auto auto;
-    grid-template-columns: 1fr;
-    row-gap: 1rem;
+    align-self: center;
+    padding: 0;
   }
 }
 </style>

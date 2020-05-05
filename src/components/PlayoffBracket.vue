@@ -16,7 +16,9 @@
     <div
       v-if="homeText !== undefined"
       class="bracket__team bracket__team--text bracket__team--home-text"
-    >{{ homeText }}</div>
+    >
+      <img src="../assets/images/playoffs/questionMark.svg" />
+    </div>
   </div>
 </template>
 
@@ -73,8 +75,8 @@ export default {
 
     &--away-text,
     &--home-text {
-      height: $logo-max-size-mobile;
-      width: $logo-max-size-mobile;
+      max-height: $logo-max-size-mobile;
+      max-width: $logo-max-size-mobile;
 
       @include lg {
         max-height: $logo-max-size-desktop;

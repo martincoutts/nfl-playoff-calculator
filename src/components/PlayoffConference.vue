@@ -50,6 +50,7 @@ export default {
   @include lg {
     grid-template-columns: repeat(4, auto);
     grid-template-rows: 80vh;
+    column-gap: 1rem;
   }
 
   .playoff-conference {
