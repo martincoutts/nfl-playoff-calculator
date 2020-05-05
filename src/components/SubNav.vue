@@ -1,5 +1,5 @@
 <template>
-  <div class="sub-nav">
+  <div v-if="this.$route.name !== 'Playoffs'" class="sub-nav">
     <nav>
       <div class="sub-nav__links">
         <router-link to="/standings/overall">
@@ -18,7 +18,15 @@
 
 <script>
 export default {
-  name: "SubNav"
+  name: "SubNav",
+  created: function() {
+    this.logRoute();
+  },
+  methods: {
+    logRoute: function() {
+      console.log(this.$route);
+    }
+  }
 };
 </script>
 
