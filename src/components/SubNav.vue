@@ -18,15 +18,7 @@
 
 <script>
 export default {
-  name: "SubNav",
-  created: function() {
-    this.logRoute();
-  },
-  methods: {
-    logRoute: function() {
-      console.log(this.$route);
-    }
-  }
+  name: "SubNav"
 };
 </script>
 
