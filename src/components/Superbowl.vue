@@ -28,7 +28,7 @@ export default {
     padding: 1rem;
     justify-items: center;
     align-items: center;
-
+    background-color: #fff;
     @include lg {
       margin: 0 1rem;
     }

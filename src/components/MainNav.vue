@@ -26,22 +26,27 @@ export default {
 @import "../scss/index.scss";
 
 .main-nav {
+  @include navActiveLink;
+
   grid-template-rows: auto;
+  background-color: $color-background;
+
   nav {
     display: grid;
-    grid-template-columns: minmax(100px, 1fr) 3fr;
+    grid-template-columns: minmax(50px, 100px) 3fr;
     align-items: center;
     column-gap: 1rem;
-    border-bottom: solid 1px black;
+    border-bottom: $nav-border;
 
+    @include navHover;
     h1 {
-      font-size: 18pt;
+      margin: 0.3rem 0;
     }
 
     img {
       height: 100px;
-
-      margin-right: -30px;
+      justify-self: center;
+      margin-left: -10px;
     }
   }
   &__logo {
@@ -50,7 +55,9 @@ export default {
   &__links {
     grid-column: 2 / span 1;
     display: flex;
-    gap: 1rem;
+    a {
+      padding-right: 0.5rem;
+    }
   }
 }
 </style>

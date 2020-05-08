@@ -33,8 +33,23 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import "./scss/index.scss";
 #app {
+  background-color: $color-background;
+  font-family: $font-primary;
+
+  font-size: $font-size-base;
+  h1 {
+    font-size: $font-size-h1;
+  }
+  h2 {
+    font-size: $font-size-h2;
+  }
+  h3 {
+    font-size: $font-size-h3;
+  }
+
   body {
     margin: 0;
     padding: 0;
@@ -42,8 +57,12 @@ export default {
   .app {
     height: 100vh;
     margin: 0;
+
     &__router-view {
       padding: 1rem;
+      @include lg {
+        padding: 3rem 1.2rem;
+      }
     }
     &__spinner {
       padding-top: 3rem;
