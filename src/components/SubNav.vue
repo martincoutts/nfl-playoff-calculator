@@ -41,6 +41,10 @@ export default {
     column-gap: 1rem;
     border-bottom: $nav-border;
 
+    @include lg {
+      display: none;
+    }
+
     @include navHover;
 
     h2 {
