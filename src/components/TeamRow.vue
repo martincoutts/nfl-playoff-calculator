@@ -1,8 +1,8 @@
 <template>
-  <Fragment>
+  <Fragment class="team-row">
     <TeamLogo :logo="logo" />
 
-    <p>{{ team.Wins }}</p>
+    <p class="table__data-cell">{{ team.Wins }}</p>
 
     <p>{{ team.Losses }}</p>
 
@@ -38,4 +38,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+p {
+  margin: 1rem 0;
+}
 </style>

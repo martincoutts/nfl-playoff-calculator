@@ -3,13 +3,13 @@
     <nav>
       <div class="sub-nav__links">
         <router-link :class="checkUrl" to="/standings/overall">
-          <h1>Overall</h1>
+          <h2>Overall</h2>
         </router-link>
         <router-link to="/standings/afc">
-          <h1>AFC</h1>
+          <h2>AFC</h2>
         </router-link>
         <router-link to="/standings/nfc">
-          <h1>NFC</h1>
+          <h2>NFC</h2>
         </router-link>
       </div>
     </nav>
@@ -43,9 +43,8 @@ export default {
 
     @include navHover;
 
-    h1 {
-      font-size: 12pt;
-      padding: 0.3rem 0;
+    h2 {
+      margin: 0.3rem 0;
     }
   }
   &__links {

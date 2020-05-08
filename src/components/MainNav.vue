@@ -39,9 +39,8 @@ export default {
     border-bottom: $nav-border;
 
     @include navHover;
-
     h1 {
-      font-size: 18pt;
+      margin: 0.3rem 0;
     }
 
     img {

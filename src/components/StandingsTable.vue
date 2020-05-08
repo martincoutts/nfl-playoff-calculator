@@ -1,5 +1,5 @@
 <template>
-  <div class="standings-table">
+  <div :class="bemBase">
     <div class="standings-table__header">
       <TeamLogo class="standings-table__logo" :logo="logo" />
       <h1 class="standings-table__title">{{ title }} {{ division }}</h1>
@@ -13,24 +13,18 @@
         <h3>T</h3>
         <h3>PCT</h3>
       </div>
-
-      <Fragment v-if="tableType === 'overall'">
-        <div
-          v-for="team in sortedTeams"
-          :key="team.TeamID"
-          class="standings-table__table--team"
-        >
-          <TeamRow :team="team" /></div
-      ></Fragment>
-      <Fragment v-else-if="tableType === 'division'">
-        <div
-          v-for="team in teams"
-          :key="team.TeamID"
-          class="standings-table__table--team"
-        >
-          <TeamRow :team="team" />
-        </div>
-      </Fragment>
+      <div class="standings-table__table--data">
+        <Fragment v-if="tableType === 'overall'">
+          <div v-for="team in sortedTeams" :key="team.TeamID" class="standings-table__table--team">
+            <TeamRow :team="team" />
+          </div>
+        </Fragment>
+        <Fragment v-else-if="tableType === 'division'">
+          <div v-for="team in teams" :key="team.TeamID" class="standings-table__table--team">
+            <TeamRow :team="team" />
+          </div>
+        </Fragment>
+      </div>
     </div>
   </div>
 </template>
@@ -48,7 +42,7 @@ export default {
     return {
       sortedTeams: "",
       logo: "",
-      bemBase: `${this.conference}-${this.tableType}`,
+      bemBase: `standings-table standings-table__${this.conference} standings-table__${this.conference}--${this.division}`
     };
   },
   created: function() {
@@ -56,7 +50,7 @@ export default {
     this.imageImport();
   },
   computed: {
-    ...mapGetters(["sortedAfc", "sortedNfc"]),
+    ...mapGetters(["sortedAfc", "sortedNfc"])
   },
   methods: {
     defineConference: function() {
@@ -68,8 +62,8 @@ export default {
     },
     imageImport: function() {
       this.logo = require(`../assets/images/conferences//${this.conference}.svg`);
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -86,27 +80,59 @@ export default {
     align-items: center;
     padding: 1rem;
     border: $general-border;
+    border-bottom: $nav-border;
   }
   &__logo {
     max-height: 100px;
     max-width: 100px;
+  }
+  &__title {
+    margin: 1rem 0.5rem;
   }
 
   &__table {
     display: flex;
     flex-direction: column;
     border: $general-border;
+    border-top: $nav-border;
+
     &--header,
     &--team {
       display: grid;
       grid-template-columns: minmax(100px, 1fr) repeat(4, 1fr);
       grid-template-rows: auto;
       text-align: center;
+
       padding: 1rem;
       align-items: center;
     }
+    &--data {
+      background-color: #fff;
+
+      font-size: 1.2rem;
+    }
     &--header {
-      border-bottom: $general-border;
+      border-bottom: $nav-border;
+    }
+  }
+}
+
+.standings-table {
+  &__AFC {
+    .standings-table {
+      &__header {
+        background-color: rgba($color-afc, 0.3);
+      }
+    }
+  }
+}
+
+.standings-table {
+  &__NFC {
+    .standings-table {
+      &__header {
+        background-color: rgba($color-nfc, 0.3);
+      }
     }
   }
 }

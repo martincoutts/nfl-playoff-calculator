@@ -33,11 +33,22 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "./scss/index.scss";
 #app {
   background-color: $color-background;
   font-family: $font-primary;
+
+  font-size: $font-size-base;
+  h1 {
+    font-size: $font-size-h1;
+  }
+  h2 {
+    font-size: $font-size-h2;
+  }
+  h3 {
+    font-size: $font-size-h3;
+  }
 
   body {
     margin: 0;
