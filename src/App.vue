@@ -60,6 +60,9 @@ export default {
 
     &__router-view {
       padding: 1rem;
+      @include lg {
+        padding: 3rem 1.2rem;
+      }
     }
     &__spinner {
       padding-top: 3rem;

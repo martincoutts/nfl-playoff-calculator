@@ -55,7 +55,9 @@ export default {
   &__links {
     grid-column: 2 / span 1;
     display: flex;
-    gap: 1rem;
+    a {
+      padding-right: 0.5rem;
+    }
   }
 }
 </style>
