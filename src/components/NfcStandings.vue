@@ -2,10 +2,11 @@
 
 <template>
   <div class="nfc-standings-table">
-    <div v-for="(div, index) in NFCDivs" :key="index">
+    <div class="nfc-standings-table__table" v-for="(div, index) in NFCDivs" :key="index">
       <StandingsTable
         :title="div[0].Conference"
         :division="div[0].Division"
+        :id="div[0].Division"
         :conference="div[0].Conference"
         :tableType="'division'"
         :teams="div"
@@ -22,18 +23,27 @@ export default {
   components: { StandingsTable },
 
   computed: {
-    ...mapState(["NFCDivs"]),
+    ...mapState(["NFCDivs"])
   },
   created: function() {
     this.sortConferences({
-      divisions: true,
+      divisions: true
     });
   },
 
   methods: {
-    ...mapActions(["sortConferences"]),
-  },
+    ...mapActions(["sortConferences"])
+  }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "../scss/index.scss";
+.nfc-standings-table {
+  @include standingsTablePadding;
+  margin-top: $non-playoffs-margin-top-mobile;
+  @include lg {
+    margin-top: $non-playoffs-margin-top-desktop;
+  }
+}
+</style>

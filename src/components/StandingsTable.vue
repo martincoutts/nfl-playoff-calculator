@@ -2,7 +2,7 @@
   <div :class="bemBase">
     <div class="standings-table__header">
       <TeamLogo class="standings-table__logo" :logo="logo" />
-      <h1 class="standings-table__title">{{ title }} {{ division }}</h1>
+      <h1 :id="id" class="standings-table__title">{{ title }} {{ division }}</h1>
     </div>
 
     <div class="standings-table__table">
@@ -36,7 +36,7 @@ import TeamRow from "./TeamRow";
 import TeamLogo from "./TeamLogo";
 export default {
   name: "StandingsTable",
-  props: ["teams", "title", "conference", "tableType", "division"],
+  props: ["teams", "title", "conference", "tableType", "division", "id"],
   components: { TeamRow, TeamLogo },
   data: function() {
     return {
@@ -72,7 +72,12 @@ export default {
 .standings-table {
   display: flex;
   flex-direction: column;
-  padding: 1rem 0;
+
+  @include standings-table-box-shadow;
+
+  @include lg {
+    margin: 1rem 2rem;
+  }
 
   &__header {
     display: flex;
@@ -81,6 +86,14 @@ export default {
     padding: 1rem;
     border: $general-border;
     border-bottom: $nav-border;
+    h1 {
+      //*Accounts for header being hidden behind sticky header at top of page
+      scroll-margin-top: 15rem;
+
+      @include lg {
+        scroll-margin-top: 10rem;
+      }
+    }
   }
   &__logo {
     max-height: 100px;

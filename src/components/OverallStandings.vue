@@ -2,10 +2,15 @@
 
 <template>
   <div class="overall-standings-table">
-    <div v-for="(arr, index) in combinedConferences" :key="index">
+    <div
+      class="overall-standings-table__table"
+      v-for="(arr, index) in combinedConferences"
+      :key="index"
+    >
       <StandingsTable
         :title="arr[0].Conference"
         :conference="arr[0].Conference"
+        :id="arr[0].Conference"
         :tableType="'overall'"
       />
     </div>
@@ -23,23 +28,32 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["results", "combinedConferences"]),
+    ...mapState(["results", "combinedConferences"])
   },
   created: function() {
     this.sortConferences({
       conference: "AFC",
-      conferenceArray: "afc",
+      conferenceArray: "afc"
     });
     this.sortConferences({
       conference: "NFC",
-      conferenceArray: "nfc",
+      conferenceArray: "nfc"
     });
   },
 
   methods: {
-    ...mapActions(["sortConferences"]),
-  },
+    ...mapActions(["sortConferences"])
+  }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "../scss/index.scss";
+.overall-standings-table {
+  @include standingsTablePadding;
+  margin-top: $non-playoffs-margin-top-mobile;
+  @include lg {
+    margin-top: $non-playoffs-margin-top-desktop;
+  }
+}
+</style>

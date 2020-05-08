@@ -1,0 +1,11 @@
+@mixin standings-table-box-shadow {
+  -webkit-box-shadow: 12px 11px 9px -7px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 12px 11px 9px -7px rgba(0, 0, 0, 0.4);
+  box-shadow: 12px 11px 9px -7px rgba(0, 0, 0, 0.4);
+}
+
+@mixin standingsTablePadding {
+  &__table {
+    padding: 1rem 0;
+  }
+}

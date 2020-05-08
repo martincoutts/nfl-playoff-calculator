@@ -3,6 +3,8 @@
   .nav-link-active {
     text-decoration: underline;
     text-decoration-color: $color-nav-active-underline;
+    color: $color-nav-active-underline;
+    opacity: 0.7;
   }
 }
 

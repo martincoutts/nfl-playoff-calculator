@@ -1,5 +1,5 @@
 <template>
-  <div v-if="this.$route.name !== 'Playoffs'" class="sub-nav">
+  <div v-if="!isPlayoffs" class="sub-nav">
     <nav>
       <div class="sub-nav__links">
         <router-link :class="checkUrl" to="/standings/overall">
@@ -24,6 +24,10 @@ export default {
       const activeClass =
         this.$route.name === "OverallStandings" ? "nav-link-active" : "";
       return activeClass;
+    },
+    isPlayoffs: function() {
+      const isPlayoffs = this.$route.name === "Playoffs";
+      return isPlayoffs;
     }
   }
 };
@@ -41,6 +45,10 @@ export default {
     column-gap: 1rem;
     border-bottom: $nav-border;
 
+    @include lg {
+      display: none;
+    }
+
     @include navHover;
 
     h2 {
@@ -51,8 +59,10 @@ export default {
     grid-column: 2 / span 1;
     display: flex;
     gap: 1rem;
-    a {
-      padding-right: 0.5rem;
+    @include lg {
+      a {
+        padding-right: 0.5rem;
+      }
     }
   }
 }

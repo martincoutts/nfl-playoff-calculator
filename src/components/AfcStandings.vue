@@ -2,10 +2,11 @@
 
 <template>
   <div class="afc-standings-table">
-    <div v-for="(div, index) in AFCDivs" :key="index">
+    <div class="afc-standings-table__table" v-for="(div, index) in AFCDivs" :key="index">
       <StandingsTable
         :title="div[0].Conference"
         :division="div[0].Division"
+        :id="div[0].Division"
         :conference="div[0].Conference"
         :tableType="'division'"
         :teams="div"
@@ -22,18 +23,27 @@ export default {
   components: { StandingsTable },
 
   computed: {
-    ...mapState(["AFCDivs"]),
+    ...mapState(["AFCDivs"])
   },
   created: function() {
     this.sortConferences({
-      divisions: true,
+      divisions: true
     });
   },
 
   methods: {
-    ...mapActions(["sortConferences"]),
-  },
+    ...mapActions(["sortConferences"])
+  }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "../scss/index.scss";
+.afc-standings-table {
+  @include standingsTablePadding;
+  margin-top: $non-playoffs-margin-top-mobile;
+  @include lg {
+    margin-top: $non-playoffs-margin-top-desktop;
+  }
+}
+</style>
