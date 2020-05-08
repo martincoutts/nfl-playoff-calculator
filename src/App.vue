@@ -34,7 +34,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "./scss/index.scss";
 #app {
+  background-color: $color-background;
+  font-family: $font-primary;
+
   body {
     margin: 0;
     padding: 0;
@@ -42,6 +46,7 @@ export default {
   .app {
     height: 100vh;
     margin: 0;
+
     &__router-view {
       padding: 1rem;
     }

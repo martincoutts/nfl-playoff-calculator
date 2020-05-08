@@ -27,21 +27,27 @@ export default {
 
 .main-nav {
   grid-template-rows: auto;
+  background-color: $color-background;
+
   nav {
     display: grid;
-    grid-template-columns: minmax(100px, 1fr) 3fr;
+    grid-template-columns: minmax(50px, 100px) 3fr;
     align-items: center;
     column-gap: 1rem;
-    border-bottom: solid 1px black;
+    border-bottom: $nav-border;
 
     h1 {
       font-size: 18pt;
+      &:hover {
+        color: #19141a;
+        opacity: 0.7;
+      }
     }
 
     img {
       height: 100px;
-
-      margin-right: -30px;
+      justify-self: center;
+      margin-left: -10px;
     }
   }
   &__logo {

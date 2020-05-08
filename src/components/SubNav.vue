@@ -28,14 +28,18 @@ export default {
 .sub-nav {
   nav {
     display: grid;
-    grid-template-columns: minmax(100px, 1fr) 3fr;
+    grid-template-columns: minmax(100px, 100px) 3fr;
     align-items: center;
     column-gap: 1rem;
-    border-bottom: solid 1px black;
+    border-bottom: $nav-border;
 
     h1 {
       font-size: 12pt;
-      padding: 0.5rem;
+      padding: 0.3rem 0;
+      &:hover {
+        color: #19141a;
+        opacity: 0.7;
+      }
     }
   }
   &__links {
