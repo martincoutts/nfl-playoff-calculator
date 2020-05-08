@@ -17,8 +17,13 @@ export default {
 <style lang="scss" scoped>
 @import "../scss/index.scss";
 .conference-championship {
-  justify-content: center;
-  padding: 0 5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  justify-items: center;
+  border: $championship-border;
+  padding: 1rem 0 1rem 0;
+  margin: 0 25%;
 
   @include md {
     padding: 0 30%;
@@ -28,8 +33,10 @@ export default {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto auto;
+
     align-self: center;
-    padding: 0;
+    padding: 1rem 0 1rem 0;
+    margin: 0;
   }
 }
 </style>

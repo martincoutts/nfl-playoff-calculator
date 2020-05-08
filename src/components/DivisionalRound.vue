@@ -29,9 +29,11 @@ export default {
 
   @include lg {
     grid-template-rows: auto auto;
-    grid-template-columns: 1fr;
+    grid-template-columns: auto;
+    column-gap: 0;
     row-gap: 1rem;
-    padding: 50% 0;
+
+    padding: 25% 0 40% 0;
   }
 }
 </style>

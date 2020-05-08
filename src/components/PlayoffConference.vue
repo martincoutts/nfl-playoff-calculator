@@ -109,9 +109,9 @@ export default {
   .playoff-conference {
     &__logo {
       grid-row: 4 / span 1;
-      -webkit-transform: rotateX(180deg);
-      transform: rotateX(180deg);
+
       @include lg {
+        transform: none;
         grid-row: 1 / span 1;
         grid-column: 4 / span 1;
       }

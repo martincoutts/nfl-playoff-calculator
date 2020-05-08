@@ -1,13 +1,14 @@
 <template>
-  <div v-if="type !== 'playoff'">
+  <fragment v-if="type !== 'playoff'">
     <img v-bind:src="logo" />
-  </div>
-  <div v-else>
+  </fragment>
+  <fragment v-else>
     <img v-bind:src="playoffLogo" />
-  </div>
+  </fragment>
 </template>
 
 <script>
+import Fragment from "vue-fragment";
 export default {
   name: "TeamLogo",
   props: ["logo", "type", "team"],
