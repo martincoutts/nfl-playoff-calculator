@@ -1,5 +1,6 @@
 $general-border: 1px solid black;
-$championship-border: 3px solid rgba(black, 0.5);
+$championship-border-afc: 5px solid rgba($color-afc, 0.3);
+$championship-border-nfc: 5px solid rgba($color-nfc, 0.3);
 $nav-border: 0.5px solid rgba(black, 0.5);
 $playoff-line: 1px solid black;
 
@@ -9,5 +10,5 @@ $logo-min-size-desktop: 55px;
 $logo-max-size-mobile: 55px;
 $logo-max-size-desktop: 65px;
 
-$superbowl-logo-max-size-mobile: 100px;
+$superbowl-logo-max-size-mobile: 110px;
 $superbowl-logo-max-size-desktop: 150px;

@@ -1,6 +1,8 @@
 <template>
-  <div class="conference-championship">
-    <PlayoffBracket :awayText="''" :homeText="''" />
+  <div :class="bemBase">
+    <div class="inner-wrapper">
+      <PlayoffBracket :awayText="''" :homeText="''" />
+    </div>
   </div>
 </template>
 
@@ -10,7 +12,12 @@ export default {
   name: "ConferenceChampionship",
 
   components: { PlayoffBracket },
-  props: ["conference"]
+  props: ["conference"],
+  data: function() {
+    return {
+      bemBase: `conference-championship conference-championship__${this.conference[0].Conference}`
+    };
+  }
 };
 </script>
 
@@ -21,7 +28,7 @@ export default {
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   justify-items: center;
-  border: $championship-border;
+
   padding: 1rem 0 1rem 0;
   margin: 0 25%;
 
@@ -37,6 +44,20 @@ export default {
     align-self: center;
     padding: 1rem 0 1rem 0;
     margin: 0;
+  }
+
+  &__AFC {
+    border: $championship-border-afc;
+    background-color: rgba($color-afc, 0.7);
+  }
+
+  &__NFC {
+    border: $championship-border-nfc;
+    background-color: rgba($color-nfc, 0.7);
+  }
+
+  .inner-wrapper {
+    background-color: #fff;
   }
 }
 </style>

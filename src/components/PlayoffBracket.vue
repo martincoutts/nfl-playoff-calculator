@@ -43,6 +43,7 @@ export default {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
+    background-color: #fff;
 
     border: $general-border;
 
