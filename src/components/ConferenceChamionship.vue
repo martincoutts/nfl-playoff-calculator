@@ -33,7 +33,8 @@ export default {
   margin: 0 25%;
 
   @include md {
-    padding: 0 30%;
+    padding: 1rem 0 1rem 0;
+    margin: 0 30%;
   }
 
   @include lg {
