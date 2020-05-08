@@ -41,5 +41,9 @@ export default {
 @import "../scss/index.scss";
 .afc-standings-table {
   @include standingsTablePadding;
+  margin-top: $non-playoffs-margin-top-mobile;
+  @include lg {
+    margin-top: $non-playoffs-margin-top-desktop;
+  }
 }
 </style>

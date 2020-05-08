@@ -1,16 +1,27 @@
 <template>
-  <div v-if="!isPlayoffs" class="sub-nav">
+  <div v-if="!isPlayoffs" class="third-nav">
     <nav>
-      <div class="sub-nav__links">
-        <router-link :class="checkUrl" to="/standings/overall">
-          <h2>Overall</h2>
-        </router-link>
-        <router-link to="/standings/afc">
+      <div v-if="this.$route.name === 'OverallStandings'" class="third-nav__links">
+        <a href="#AFC">
           <h2>AFC</h2>
-        </router-link>
-        <router-link to="/standings/nfc">
+        </a>
+        <a href="#NFC">
           <h2>NFC</h2>
-        </router-link>
+        </a>
+      </div>
+      <div v-if="this.$route.name !== 'OverallStandings'" class="third-nav__links">
+        <a href="#North">
+          <h2>North</h2>
+        </a>
+        <a href="#East">
+          <h2>East</h2>
+        </a>
+        <a href="#South">
+          <h2>South</h2>
+        </a>
+        <a href="#West">
+          <h2>West</h2>
+        </a>
       </div>
     </nav>
   </div>
@@ -18,7 +29,7 @@
 
 <script>
 export default {
-  name: "SubNav",
+  name: "thirdNav",
   computed: {
     checkUrl: function() {
       const activeClass =
@@ -36,7 +47,7 @@ export default {
 <style lang="scss" scoped>
 @import "../scss/index.scss";
 
-.sub-nav {
+.third-nav {
   @include navActiveLink;
   nav {
     display: grid;

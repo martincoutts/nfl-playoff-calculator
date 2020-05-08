@@ -12,7 +12,7 @@
           <h1>Playoffs</h1>
         </router-link>
 
-        <div class="sub-nav__links--main-nav">
+        <div v-if="subNavDisplay === true" class="sub-nav__links--main-nav">
           <a-divider type="vertical" />
           <router-link :class="checkUrl" to="/standings/overall">
             <h2>Overall</h2>
@@ -26,7 +26,7 @@
         </div>
 
         <div
-          v-if="this.$route.name === 'OverallStandings'"
+          v-if="subNavDisplay && thirdNavDisplay"
           class="sub-nav__links--main-nav sub-nav__links--main-nav"
         >
           <a-divider type="vertical" />
@@ -39,7 +39,7 @@
         </div>
 
         <div
-          v-if="this.$route.name !== 'OverallStandings'"
+          v-if="subNavDisplay && !thirdNavDisplay"
           class="sub-nav__links--main-nav sub-nav__links--main-nav"
         >
           <a-divider type="vertical" />
@@ -69,6 +69,16 @@ export default {
       const activeClass =
         this.$route.name === "OverallStandings" ? "nav-link-active" : "";
       return activeClass;
+    },
+
+    subNavDisplay: function() {
+      const display = this.$route.name !== "Playoffs";
+
+      return display;
+    },
+    thirdNavDisplay: function() {
+      const display = this.$route.name === "OverallStandings";
+      return display;
     }
   }
 };
@@ -82,9 +92,6 @@ export default {
 
   grid-template-rows: auto;
   background-color: $color-background;
-  position: fixed;
-  top: 0;
-  width: 100%;
 
   nav {
     display: grid;
@@ -93,9 +100,6 @@ export default {
     align-items: center;
     column-gap: 1rem;
     border-bottom: $nav-border;
-    -webkit-box-shadow: 3px 7px 9px -1px rgba(0, 0, 0, 0.46);
-    -moz-box-shadow: 3px 7px 9px -1px rgba(0, 0, 0, 0.46);
-    box-shadow: 3px 7px 9px -1px rgba(0, 0, 0, 0.46);
 
     @include lg {
       grid-template-columns: minmax(50px, 100px) auto auto;
@@ -104,6 +108,9 @@ export default {
     @include navHover;
     h1 {
       margin: 0.3rem 0;
+      @include lg {
+        margin-left: 1rem;
+      }
     }
 
     img {

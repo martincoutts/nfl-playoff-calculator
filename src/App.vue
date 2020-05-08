@@ -1,7 +1,6 @@
 <template>
   <div id="app" class="app">
-    <MainNav />
-    <SubNav />
+    <Nav />
     <div class="app__spinner" v-if="!hasResults">
       <a-spin size="large" />
     </div>
@@ -11,13 +10,11 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-
-import MainNav from "./components/MainNav";
-import SubNav from "./components/SubNav";
+import Nav from "./components/Nav";
 
 export default {
   name: "App",
-  components: { MainNav, SubNav },
+  components: { Nav },
   data() {
     return {};
   },
@@ -59,10 +56,7 @@ export default {
     margin: 0;
 
     &__router-view {
-      @include lg {
-        padding: 3rem 1.2rem;
-        margin-top: 80px;
-      }
+      padding: 1rem 1.2rem;
     }
     &__spinner {
       padding-top: 3rem;

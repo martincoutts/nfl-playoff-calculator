@@ -73,9 +73,10 @@ export default {
   display: flex;
   flex-direction: column;
 
+  @include standings-table-box-shadow;
+
   @include lg {
     margin: 1rem 2rem;
-    @include standings-table-box-shadow;
   }
 
   &__header {
@@ -87,7 +88,10 @@ export default {
     border-bottom: $nav-border;
     h1 {
       //*Accounts for header being hidden behind sticky header at top of page
-      scroll-margin-top: 10rem;
+      scroll-margin-top: 15rem;
+      @include lg {
+        scroll-margin-top: 10rem;
+      }
     }
   }
   &__logo {
