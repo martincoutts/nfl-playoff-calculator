@@ -145,7 +145,7 @@ export default {
       }
       h2,
       .ant-divider-vertical {
-        margin: 0.5rem 0;
+        margin: 0.5rem 1rem 0.5rem 0;
       }
       .ant-divider-vertical {
         height: 1.6rem;

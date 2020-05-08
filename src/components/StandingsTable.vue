@@ -89,6 +89,7 @@ export default {
     h1 {
       //*Accounts for header being hidden behind sticky header at top of page
       scroll-margin-top: 15rem;
+
       @include lg {
         scroll-margin-top: 10rem;
       }
