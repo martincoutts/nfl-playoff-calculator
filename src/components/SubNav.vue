@@ -2,7 +2,7 @@
   <div v-if="this.$route.name !== 'Playoffs'" class="sub-nav">
     <nav>
       <div class="sub-nav__links">
-        <router-link to="/standings/overall">
+        <router-link :class="checkUrl" to="/standings/overall">
           <h1>Overall</h1>
         </router-link>
         <router-link to="/standings/afc">
@@ -18,7 +18,14 @@
 
 <script>
 export default {
-  name: "SubNav"
+  name: "SubNav",
+  computed: {
+    checkUrl: function() {
+      const activeClass =
+        this.$route.name === "OverallStandings" ? "nav-link-active" : "";
+      return activeClass;
+    }
+  }
 };
 </script>
 
@@ -26,6 +33,7 @@ export default {
 @import "../scss/index.scss";
 
 .sub-nav {
+  @include navActiveLink;
   nav {
     display: grid;
     grid-template-columns: minmax(100px, 100px) 3fr;
@@ -33,13 +41,11 @@ export default {
     column-gap: 1rem;
     border-bottom: $nav-border;
 
+    @include navHover;
+
     h1 {
       font-size: 12pt;
       padding: 0.3rem 0;
-      &:hover {
-        color: #19141a;
-        opacity: 0.7;
-      }
     }
   }
   &__links {

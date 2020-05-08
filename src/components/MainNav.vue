@@ -26,6 +26,8 @@ export default {
 @import "../scss/index.scss";
 
 .main-nav {
+  @include navActiveLink;
+
   grid-template-rows: auto;
   background-color: $color-background;
 
@@ -36,12 +38,10 @@ export default {
     column-gap: 1rem;
     border-bottom: $nav-border;
 
+    @include navHover;
+
     h1 {
       font-size: 18pt;
-      &:hover {
-        color: #19141a;
-        opacity: 0.7;
-      }
     }
 
     img {
