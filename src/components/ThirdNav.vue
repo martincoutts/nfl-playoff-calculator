@@ -1,25 +1,25 @@
 <template>
   <div v-if="!isPlayoffs" class="third-nav">
     <nav>
-      <div v-if="this.$route.name === 'OverallStandings'" class="third-nav__links">
-        <a href="#AFC">
+      <div class="third-nav__links" v-if="this.$route.name === 'OverallStandings'">
+        <a class="third-nav__link" v-on:click="addActiveLinkClass" href="#AFC">
           <h2>AFC</h2>
         </a>
-        <a href="#NFC">
+        <a class="third-nav__link" v-on:click="addActiveLinkClass" href="#NFC">
           <h2>NFC</h2>
         </a>
       </div>
       <div v-if="this.$route.name !== 'OverallStandings'" class="third-nav__links">
-        <a href="#North">
+        <a class="third-nav__link" v-on:click="addActiveLinkClass" href="#North">
           <h2>North</h2>
         </a>
-        <a href="#East">
+        <a class="third-nav__link" v-on:click="addActiveLinkClass" href="#East">
           <h2>East</h2>
         </a>
-        <a href="#South">
+        <a class="third-nav__link" v-on:click="addActiveLinkClass" href="#South">
           <h2>South</h2>
         </a>
-        <a href="#West">
+        <a class="third-nav__link" v-on:click="addActiveLinkClass" href="#West">
           <h2>West</h2>
         </a>
       </div>
@@ -39,6 +39,27 @@ export default {
     isPlayoffs: function() {
       const isPlayoffs = this.$route.name === "Playoffs";
       return isPlayoffs;
+    }
+  },
+  created: function() {
+    this.removeActiveLinkClass();
+  },
+  methods: {
+    removeActiveLinkClass: function() {
+      const links = document.getElementsByTagName("h2");
+
+      links.forEach(link => {
+        link.classList.remove("nav-link-active");
+      });
+    },
+    addActiveLinkClass: function(e) {
+      const links = document.getElementsByTagName("h2");
+
+      links.forEach(link => {
+        link.classList.remove("nav-link-active");
+      });
+
+      e.target.classList.add("nav-link-active");
     }
   }
 };
