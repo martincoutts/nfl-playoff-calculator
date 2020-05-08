@@ -59,9 +59,9 @@ export default {
     margin: 0;
 
     &__router-view {
-      padding: 1rem;
       @include lg {
         padding: 3rem 1.2rem;
+        margin-top: 80px;
       }
     }
     &__spinner {

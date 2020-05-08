@@ -24,6 +24,38 @@
             <h2>NFC</h2>
           </router-link>
         </div>
+
+        <div
+          v-if="this.$route.name === 'OverallStandings'"
+          class="sub-nav__links--main-nav sub-nav__links--main-nav"
+        >
+          <a-divider type="vertical" />
+          <a href="#AFC">
+            <h2>AFC</h2>
+          </a>
+          <a href="#NFC">
+            <h2>NFC</h2>
+          </a>
+        </div>
+
+        <div
+          v-if="this.$route.name !== 'OverallStandings'"
+          class="sub-nav__links--main-nav sub-nav__links--main-nav"
+        >
+          <a-divider type="vertical" />
+          <a href="#North">
+            <h2>North</h2>
+          </a>
+          <a href="#East">
+            <h2>East</h2>
+          </a>
+          <a href="#South">
+            <h2>South</h2>
+          </a>
+          <a href="#West">
+            <h2>West</h2>
+          </a>
+        </div>
       </div>
     </nav>
   </div>
@@ -31,7 +63,14 @@
 
 <script>
 export default {
-  name: "MainNav"
+  name: "MainNav",
+  computed: {
+    checkUrl: function() {
+      const activeClass =
+        this.$route.name === "OverallStandings" ? "nav-link-active" : "";
+      return activeClass;
+    }
+  }
 };
 </script>
 
@@ -43,6 +82,9 @@ export default {
 
   grid-template-rows: auto;
   background-color: $color-background;
+  position: fixed;
+  top: 0;
+  width: 100%;
 
   nav {
     display: grid;
@@ -51,6 +93,9 @@ export default {
     align-items: center;
     column-gap: 1rem;
     border-bottom: $nav-border;
+    -webkit-box-shadow: 3px 7px 9px -1px rgba(0, 0, 0, 0.46);
+    -moz-box-shadow: 3px 7px 9px -1px rgba(0, 0, 0, 0.46);
+    box-shadow: 3px 7px 9px -1px rgba(0, 0, 0, 0.46);
 
     @include lg {
       grid-template-columns: minmax(50px, 100px) auto auto;
