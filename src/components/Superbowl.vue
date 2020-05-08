@@ -28,6 +28,10 @@ export default {
     padding: 1rem;
     justify-items: center;
     align-items: center;
+
+    @include lg {
+      margin: 0 1rem;
+    }
   }
   &__image {
     max-height: $superbowl-logo-max-size-mobile;

@@ -42,15 +42,32 @@ export default {
 
     grid-template-rows: repeat(3, 1fr);
     row-gap: 1rem;
+
+    @include lg {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 1fr;
+    }
   }
 }
 .AFC {
   grid-row: 1 / span 1;
+  @include lg {
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+  }
 }
 .NFC {
   grid-row: 3 / span 1;
+  @include lg {
+    grid-row: 1 / span 1;
+    grid-column: 4 / span 1;
+  }
 }
 .superbowl__wrapper {
   grid-row: 2 / span 1;
+  @include lg {
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 1;
+  }
 }
 </style>
