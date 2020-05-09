@@ -3,7 +3,7 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
-const sortTeamsFunc = function(arr, customVarA, customVarB, customVarC) {
+export const sortTeamsFunc = function(arr, customVarA, customVarB, customVarC) {
   const compare = (a, b) => {
     if (a[customVarA] > b[customVarA]) return -1;
     if (a[customVarA] === b[customVarA]) {
@@ -23,7 +23,7 @@ const sortTeamsFunc = function(arr, customVarA, customVarB, customVarC) {
   return sortedArr;
 };
 
-const getDivisionChamps = (divisionArray, champsMap, teamNameArr) => {
+export const getDivisionChamps = (divisionArray, champsMap, teamNameArr) => {
   divisionArray.map((division) => {
     const champ = division[0];
     champsMap.get(champ.Division).push(champ);
