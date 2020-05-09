@@ -1,22 +1,75 @@
 <template>
-  <div id="app">
-    <MainNav />
-    <SubNav />
-    <router-view />
+  <div id="app" class="app">
+    <Nav />
+    <div class="app__spinner" v-if="!hasResults">
+      <a-spin size="large" />
+    </div>
+    <router-view class="app__router-view" v-if="hasResults" />
   </div>
 </template>
 
 <script>
-import MainNav from "./components/MainNav";
-import SubNav from "./components/SubNav";
+import { mapState, mapActions } from "vuex";
+import Nav from "./components/Nav";
 
 export default {
   name: "App",
-  components: { MainNav, SubNav }
+  components: { Nav },
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapState(["hasResults"])
+  },
+  created: function() {
+    this.fetchData();
+  },
+  methods: {
+    ...mapActions(["fetchData"])
+  }
 };
 </script>
 
-<style>
+<style lang="scss">
+@import "./scss/index.scss";
 #app {
+  background-color: $color-background;
+  font-family: $font-primary;
+
+  font-size: $font-size-base;
+  h1 {
+    font-size: $font-size-h1;
+  }
+  h2 {
+    font-size: $font-size-h2;
+  }
+  h3 {
+    font-size: $font-size-h3;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .app {
+    height: 100vh;
+    margin: 0;
+
+    &__router-view {
+      padding: 1rem 1.2rem;
+      @include xl {
+        height: auto;
+        margin-bottom: 0;
+        padding-bottom: 100px;
+      }
+    }
+    &__spinner {
+      padding-top: 3rem;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+    }
+  }
 }
 </style>

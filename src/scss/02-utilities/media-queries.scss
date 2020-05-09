@@ -1,9 +1,9 @@
-// Small devices
-@mixin sm {
-  @media (min-width: #{$screen-sm-min}) {
-    @content;
-  }
-}
+// // Small devices
+// @mixin sm {
+//   @media screen and (min-width: #{$screen-sm-min}) {
+//     @content;
+//   }
+// }
 
 // Medium devices
 @mixin md {

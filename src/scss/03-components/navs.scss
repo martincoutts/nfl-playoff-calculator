@@ -1,0 +1,16 @@
+@mixin navActiveLink {
+  .router-link-active,
+  .nav-link-active {
+    text-decoration: underline;
+    text-decoration-color: $color-nav-active-underline;
+    color: $color-nav-active-underline;
+    opacity: 0.7;
+  }
+}
+
+@mixin navHover {
+  h1:hover {
+    color: #19141a;
+    opacity: 0.7;
+  }
+}

@@ -1,15 +1,15 @@
 <template>
-  <div class="sub-nav">
+  <div v-if="!isPlayoffs" class="sub-nav">
     <nav>
       <div class="sub-nav__links">
-        <router-link to="/standings/overall">
-          <h1>Overall</h1>
+        <router-link :class="checkUrl" to="/standings/overall">
+          <h2>Overall</h2>
         </router-link>
         <router-link to="/standings/afc">
-          <h1>AFC</h1>
+          <h2>AFC</h2>
         </router-link>
         <router-link to="/standings/nfc">
-          <h1>NFC</h1>
+          <h2>NFC</h2>
         </router-link>
       </div>
     </nav>
@@ -18,28 +18,51 @@
 
 <script>
 export default {
-  name: "SubNav"
+  name: "SubNav",
+  computed: {
+    checkUrl: function() {
+      const activeClass =
+        this.$route.name === "OverallStandings" ? "nav-link-active" : "";
+      return activeClass;
+    },
+    isPlayoffs: function() {
+      const isPlayoffs = this.$route.name === "Playoffs";
+      return isPlayoffs;
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../scss/index.scss";
-@include sm {
-  .sub-nav {
-    nav {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      border-bottom: solid 1px black;
-      padding-left: 10px;
 
-      h1 {
-        font-size: 12pt;
-        padding: 0.5rem;
-      }
+.sub-nav {
+  @include navActiveLink;
+  nav {
+    display: grid;
+    grid-template-columns: minmax(100px, 100px) 3fr;
+    align-items: center;
+    column-gap: 1rem;
+    border-bottom: $nav-border;
+
+    @include lg {
+      display: none;
     }
-    &__links {
-      grid-column: 2 / span 1;
-      display: flex;
+
+    @include navHover;
+
+    h2 {
+      margin: 0.3rem 0;
+    }
+  }
+  &__links {
+    grid-column: 2 / span 1;
+    display: flex;
+    gap: 1rem;
+    @include lg {
+      a {
+        padding-right: 0.5rem;
+      }
     }
   }
 }
