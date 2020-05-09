@@ -58,6 +58,11 @@ export default {
 
     &__router-view {
       padding: 1rem 1.2rem;
+      @include xl {
+        height: auto;
+        margin-bottom: 0;
+        padding-bottom: 100px;
+      }
     }
     &__spinner {
       padding-top: 3rem;

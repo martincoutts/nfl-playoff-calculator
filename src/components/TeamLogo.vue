@@ -42,5 +42,9 @@ img {
     max-height: $logo-max-size-desktop;
     max-width: $logo-max-size-desktop;
   }
+  @include xl {
+    max-height: $logo-max-size-widescreen;
+    max-width: $logo-max-size-widescreen;
+  }
 }
 </style>

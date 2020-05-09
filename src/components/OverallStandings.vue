@@ -55,5 +55,7 @@ export default {
   @include lg {
     margin-top: $non-playoffs-margin-top-desktop;
   }
+
+  @include widescreenTableGrid(2, 1fr);
 }
 </style>

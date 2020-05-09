@@ -17,17 +17,20 @@
           <router-link :class="checkUrl" to="/standings/overall">
             <h2>Overall</h2>
           </router-link>
-          <router-link to="/standings/afc">
+          <router-link class="sub-nav__links--divisions" to="/standings/divisions">
+            <h2>Divisions</h2>
+          </router-link>
+          <router-link class="sub-nav__links--conferences" to="/standings/afc">
             <h2>AFC</h2>
           </router-link>
-          <router-link to="/standings/nfc">
+          <router-link class="sub-nav__links--conferences" to="/standings/nfc">
             <h2>NFC</h2>
           </router-link>
         </div>
 
         <div
           v-if="subNavDisplay && thirdNavDisplay"
-          class="sub-nav__links--main-nav sub-nav__links--main-nav"
+          class="sub-nav__links--main-nav sub-nav__links--third-nav"
         >
           <a-divider type="vertical" />
           <a href="#AFC">
@@ -40,7 +43,7 @@
 
         <div
           v-if="subNavDisplay && !thirdNavDisplay"
-          class="sub-nav__links--main-nav sub-nav__links--main-nav"
+          class="sub-nav__links--main-nav sub-nav__links--third-nav"
         >
           <a-divider type="vertical" />
           <a href="#North">
@@ -135,6 +138,17 @@ export default {
   @include navActiveLink;
 
   &__links {
+    &--divisions {
+      display: none;
+      @include xl {
+        display: block;
+      }
+    }
+    &--conferences {
+      @include xl {
+        display: none;
+      }
+    }
     &--main-nav {
       display: none;
       @include lg {
@@ -143,6 +157,7 @@ export default {
         gap: 1rem;
         align-items: flex-end;
       }
+
       h2,
       .ant-divider-vertical {
         margin: 0.5rem 1rem 0.5rem 0;
@@ -152,6 +167,11 @@ export default {
       }
       a {
         padding-right: 0.5rem;
+      }
+    }
+    &--third-nav {
+      @include xl {
+        display: none;
       }
     }
   }

@@ -104,6 +104,12 @@ export default {
         max-height: $logo-max-size-desktop;
         max-width: $logo-max-size-desktop;
       }
+      @include xl {
+        min-height: $logo-min-size-widescreen;
+        min-width: $logo-min-size-widescreen;
+        max-height: $logo-max-size-widescreen;
+        max-width: $logo-max-size-widescreen;
+      }
     }
   }
 }

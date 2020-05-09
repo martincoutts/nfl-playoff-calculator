@@ -38,6 +38,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.team-row {
+  padding: 1rem 0;
+}
 p {
   margin: 1rem 0;
 }

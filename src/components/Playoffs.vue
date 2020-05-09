@@ -47,6 +47,9 @@ export default {
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: 1fr;
     }
+    @include xl {
+      margin: 50px 0;
+    }
   }
 }
 .AFC {
