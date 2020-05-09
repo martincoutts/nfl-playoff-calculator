@@ -5,7 +5,7 @@
         <img src="../assets/images/nflLogo.svg" />
       </div>
       <div class="main-nav__links">
-        <router-link to="/standings">
+        <router-link :class="checkUrl" to="/standings">
           <h1>Standings</h1>
         </router-link>
         <router-link to="/playoffs">
@@ -17,7 +17,10 @@
           <router-link :class="checkUrl" to="/standings/overall">
             <h2>Overall</h2>
           </router-link>
-          <router-link class="sub-nav__links--divisions" to="/standings/divisions">
+          <router-link
+            class="sub-nav__links--divisions"
+            to="/standings/divisions"
+          >
             <h2>Divisions</h2>
           </router-link>
           <router-link class="sub-nav__links--conferences" to="/standings/afc">
@@ -82,8 +85,8 @@ export default {
     thirdNavDisplay: function() {
       const display = this.$route.name === "OverallStandings";
       return display;
-    }
-  }
+    },
+  },
 };
 </script>
 
