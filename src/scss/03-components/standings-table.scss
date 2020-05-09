@@ -9,3 +9,11 @@
     padding: 1rem 0;
   }
 }
+
+@mixin widescreenTableGrid($repeat-value, $column-size) {
+  @include xl {
+    display: grid;
+    grid-template-columns: repeat($repeat-value, $column-size);
+    grid-template-rows: 1fr;
+  }
+}

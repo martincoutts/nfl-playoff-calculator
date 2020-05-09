@@ -41,6 +41,10 @@ export default {
       max-height: $superbowl-logo-max-size-desktop;
       max-width: $superbowl-logo-max-size-desktop;
     }
+    @include xl {
+      max-height: $superbowl-logo-max-size-widescreen;
+      max-width: $superbowl-logo-max-size-widescreen;
+    }
   }
   &__image {
     &--championship {
