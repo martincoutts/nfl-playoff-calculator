@@ -28,8 +28,8 @@ export default {
     isPlayoffs: function() {
       const isPlayoffs = this.$route.name === "Playoffs";
       return isPlayoffs;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -59,10 +59,8 @@ export default {
     grid-column: 2 / span 1;
     display: flex;
     gap: 1rem;
-    @include lg {
-      a {
-        padding-right: 0.5rem;
-      }
+    a {
+      padding-right: 0.5rem;
     }
   }
 }

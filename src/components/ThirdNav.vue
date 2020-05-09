@@ -1,7 +1,10 @@
 <template>
   <div v-if="!isPlayoffs" class="third-nav">
     <nav>
-      <div class="third-nav__links" v-if="this.$route.name === 'OverallStandings'">
+      <div
+        class="third-nav__links"
+        v-if="this.$route.name === 'OverallStandings'"
+      >
         <a class="third-nav__link" v-on:click="addActiveLinkClass" href="#AFC">
           <h2>AFC</h2>
         </a>
@@ -9,14 +12,25 @@
           <h2>NFC</h2>
         </a>
       </div>
-      <div v-if="this.$route.name !== 'OverallStandings'" class="third-nav__links">
-        <a class="third-nav__link" v-on:click="addActiveLinkClass" href="#North">
+      <div
+        v-if="this.$route.name !== 'OverallStandings'"
+        class="third-nav__links"
+      >
+        <a
+          class="third-nav__link"
+          v-on:click="addActiveLinkClass"
+          href="#North"
+        >
           <h2>North</h2>
         </a>
         <a class="third-nav__link" v-on:click="addActiveLinkClass" href="#East">
           <h2>East</h2>
         </a>
-        <a class="third-nav__link" v-on:click="addActiveLinkClass" href="#South">
+        <a
+          class="third-nav__link"
+          v-on:click="addActiveLinkClass"
+          href="#South"
+        >
           <h2>South</h2>
         </a>
         <a class="third-nav__link" v-on:click="addActiveLinkClass" href="#West">
@@ -39,7 +53,7 @@ export default {
     isPlayoffs: function() {
       const isPlayoffs = this.$route.name === "Playoffs";
       return isPlayoffs;
-    }
+    },
   },
   created: function() {
     this.removeActiveLinkClass();
@@ -48,20 +62,20 @@ export default {
     removeActiveLinkClass: function() {
       const links = document.getElementsByTagName("h2");
 
-      links.forEach(link => {
+      links.forEach((link) => {
         link.classList.remove("nav-link-active");
       });
     },
     addActiveLinkClass: function(e) {
       const links = document.getElementsByTagName("h2");
 
-      links.forEach(link => {
+      links.forEach((link) => {
         link.classList.remove("nav-link-active");
       });
 
       e.target.classList.add("nav-link-active");
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -91,10 +105,9 @@ export default {
     grid-column: 2 / span 1;
     display: flex;
     gap: 1rem;
-    @include lg {
-      a {
-        padding-right: 0.5rem;
-      }
+
+    a {
+      padding-right: 0.5rem;
     }
   }
 }

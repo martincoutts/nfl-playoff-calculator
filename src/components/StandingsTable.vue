@@ -2,7 +2,9 @@
   <div :class="bemBase">
     <div class="standings-table__header">
       <TeamLogo class="standings-table__logo" :logo="logo" />
-      <h1 :id="id" class="standings-table__title">{{ title }} {{ division }}</h1>
+      <h1 :id="id" class="standings-table__title">
+        {{ title }} {{ division }}
+      </h1>
     </div>
 
     <div class="standings-table__table">
@@ -15,12 +17,20 @@
       </div>
       <div class="standings-table__table--data">
         <Fragment v-if="tableType === 'overall'">
-          <div v-for="team in sortedTeams" :key="team.TeamID" class="standings-table__table--team">
+          <div
+            v-for="team in sortedTeams"
+            :key="team.TeamID"
+            class="standings-table__table--team"
+          >
             <TeamRow :team="team" />
           </div>
         </Fragment>
         <Fragment v-else-if="tableType === 'division'">
-          <div v-for="team in teams" :key="team.TeamID" class="standings-table__table--team">
+          <div
+            v-for="team in teams"
+            :key="team.TeamID"
+            class="standings-table__table--team"
+          >
             <TeamRow :team="team" />
           </div>
         </Fragment>
@@ -42,7 +52,7 @@ export default {
     return {
       sortedTeams: "",
       logo: "",
-      bemBase: `standings-table standings-table__${this.conference} standings-table__${this.conference}--${this.division}`
+      bemBase: `standings-table standings-table__${this.conference} standings-table__${this.conference}--${this.division}`,
     };
   },
   created: function() {
@@ -50,7 +60,7 @@ export default {
     this.imageImport();
   },
   computed: {
-    ...mapGetters(["sortedAfc", "sortedNfc"])
+    ...mapGetters(["sortedAfc", "sortedNfc"]),
   },
   methods: {
     defineConference: function() {
@@ -62,8 +72,8 @@ export default {
     },
     imageImport: function() {
       this.logo = require(`../assets/images/conferences//${this.conference}.svg`);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -88,7 +98,7 @@ export default {
     border-bottom: $nav-border;
     h1 {
       //*Accounts for header being hidden behind sticky header at top of page
-      scroll-margin-top: 15rem;
+      scroll-margin-top: 11rem;
 
       @include lg {
         scroll-margin-top: 10rem;
