@@ -6,7 +6,7 @@
     <div class="app__spinner" v-if="!hasResults && !hasError">
       <a-spin size="large" />
     </div>
-    <ErrorPage />
+    <ErrorPage v-if="hasError" />
   </div>
 </template>
 
