@@ -71,6 +71,7 @@ const sortChamps = (conferenceArray, playoffMap) => {
 export default new Vuex.Store({
   state: {
     hasResults: false,
+    hasError: false,
     results: {},
     afc: [],
     nfc: [],
@@ -106,9 +107,9 @@ export default new Vuex.Store({
         state.results = data;
         if (res.json()) {
           state.hasResults = state.results.length > 0;
-          actions.test();
         }
       } catch (e) {
+        state.hasError = true;
         console.log(e);
       }
     },

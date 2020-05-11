@@ -1,25 +1,28 @@
 <template>
   <div id="app" class="app">
     <Nav />
-    <div class="app__spinner" v-if="!hasResults">
+
+    <router-view class="app__router-view" v-if="hasResults && !hasError" />
+    <div class="app__spinner" v-if="!hasResults && !hasError">
       <a-spin size="large" />
     </div>
-    <router-view class="app__router-view" v-if="hasResults" />
+    <ErrorPage />
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from "vuex";
 import Nav from "./components/Nav";
+import ErrorPage from "./components/ErrorPage";
 
 export default {
   name: "App",
-  components: { Nav },
+  components: { Nav, ErrorPage },
   data() {
     return {};
   },
   computed: {
-    ...mapState(["hasResults"])
+    ...mapState(["hasResults", "hasError"])
   },
   created: function() {
     this.fetchData();
@@ -65,10 +68,12 @@ export default {
       }
     }
     &__spinner {
-      padding-top: 3rem;
+      height: 100vh;
+      background-color: #fff;
       display: flex;
+
       justify-content: center;
-      align-content: center;
+      align-items: center;
     }
   }
 }
